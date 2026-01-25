@@ -55,10 +55,10 @@ const Resources = () => {
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            whileHover={{ y: -10 }}
-                            className="bg-white p-8 rounded-3xl border border-primary/5 shadow-sm hover:shadow-xl transition-all duration-300 relative group"
+                            viewport={{ once: true, margin: "-30px" }}
+                            transition={{ delay: i * 0.08, duration: 0.5 }}
+                            whileHover={{ y: -8 }}
+                            className="bg-white p-8 rounded-3xl border border-primary/5 shadow-sm hover:shadow-xl transition-all duration-300 relative group will-change-transform"
                         >
                             <div className="mb-6 inline-block p-4 bg-primary/[0.02] rounded-2xl group-hover:bg-secondary/10 transition-colors">
                                 {item.icon}
@@ -84,8 +84,8 @@ const Resources = () => {
                             <div className="absolute inset-0 opacity-10 pointer-events-none">
                                 <motion.div
                                     animate={{ rotate: 360 }}
-                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                    className="absolute -top-1/2 -right-1/2 w-full h-full border-2 border-dashed border-white rounded-full"
+                                    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                                    className="absolute -top-1/2 -right-1/2 w-full h-full border-2 border-dashed border-white rounded-full will-change-transform"
                                 />
                             </div>
 

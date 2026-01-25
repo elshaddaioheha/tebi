@@ -30,15 +30,15 @@ const Problem = () => {
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: true, margin: "-50px" }}
                         variants={{
-                            hidden: { opacity: 0, x: -30 },
+                            hidden: { opacity: 0, x: -20 },
                             visible: {
                                 opacity: 1,
                                 x: 0,
                                 transition: {
-                                    duration: 0.8,
-                                    staggerChildren: 0.15,
+                                    duration: 0.6,
+                                    staggerChildren: 0.1,
                                     when: "beforeChildren"
                                 }
                             }
@@ -69,8 +69,8 @@ const Problem = () => {
                                 <motion.div
                                     key={i}
                                     variants={{
-                                        hidden: { opacity: 0, x: -20 },
-                                        visible: { opacity: 1, x: 0 }
+                                        hidden: { opacity: 0, x: -15 },
+                                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
                                     }}
                                     className="flex gap-4 group"
                                 >
@@ -112,8 +112,8 @@ const Problem = () => {
                                         initial={{ width: 0 }}
                                         whileInView={{ width: "90%" }}
                                         viewport={{ once: true }}
-                                        transition={{ duration: 1, delay: 0.5 }}
-                                        className="h-full bg-red-400"
+                                        transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                        className="h-full bg-red-400 will-change-[width]"
                                     />
                                 </div>
                                 <p className="mt-2 text-sm text-primary/50 italic text-right">Burnout Territory</p>
@@ -129,8 +129,8 @@ const Problem = () => {
                                         initial={{ width: 0 }}
                                         whileInView={{ width: "100%" }}
                                         viewport={{ once: true }}
-                                        transition={{ duration: 1, delay: 0.8 }}
-                                        className="h-full bg-secondary"
+                                        transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                        className="h-full bg-secondary will-change-[width]"
                                     />
                                 </div>
                                 <p className="mt-2 text-sm text-secondary font-bold italic text-right">Freedom & Growth</p>

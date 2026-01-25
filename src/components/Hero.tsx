@@ -11,19 +11,19 @@ const Hero = () => {
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <motion.div
                     animate={{
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 5, 0],
+                        scale: [1, 1.05, 1],
+                        rotate: [0, 3, 0],
                     }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute -top-[10%] -left-[5%] w-[40%] h-[40%] bg-accent/20 rounded-full blur-3xl"
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute -top-[10%] -left-[5%] w-[40%] h-[40%] bg-accent/20 rounded-full blur-3xl will-change-transform"
                 />
                 <motion.div
                     animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, -5, 0],
+                        scale: [1, 1.1, 1],
+                        rotate: [0, -3, 0],
                     }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute -bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-3xl"
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute -bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-3xl will-change-transform"
                 />
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')] opacity-[0.03]" />
             </div>
@@ -37,15 +37,16 @@ const Hero = () => {
                         visible: {
                             opacity: 1,
                             transition: {
-                                staggerChildren: 0.2,
+                                staggerChildren: 0.12,
+                                delayChildren: 0.1
                             },
                         },
                     }}
                 >
                     <motion.span
                         variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                            hidden: { opacity: 0, y: 15 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
                         }}
                         className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest uppercase text-secondary border border-secondary/30 rounded-full bg-secondary/5"
                     >
@@ -54,8 +55,8 @@ const Hero = () => {
 
                     <motion.h1
                         variants={{
-                            hidden: { opacity: 0, y: 30 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
                         }}
                         className="text-5xl md:text-7xl lg:text-8xl font-serif text-primary mb-8 leading-[1.1] tracking-tight text-balance"
                     >
@@ -65,8 +66,8 @@ const Hero = () => {
 
                     <motion.p
                         variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                            hidden: { opacity: 0, y: 15 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
                         }}
                         className="text-xl md:text-2xl text-primary/70 mb-12 max-w-3xl mx-auto leading-relaxed text-balance"
                     >
@@ -75,8 +76,8 @@ const Hero = () => {
 
                     <motion.div
                         variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                            hidden: { opacity: 0, y: 15 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
                         }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >

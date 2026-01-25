@@ -51,19 +51,19 @@ const Solution = () => {
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
                             variants={{
-                                hidden: { opacity: 0, y: 40 },
+                                hidden: { opacity: 0, y: 30 },
                                 visible: {
                                     opacity: 1,
                                     y: 0,
                                     transition: {
-                                        duration: 0.8,
-                                        delay: i * 0.1,
-                                        ease: [0.16, 1, 0.3, 1]
+                                        duration: 0.6,
+                                        delay: i * 0.08,
+                                        ease: [0.22, 1, 0.36, 1]
                                     }
                                 }
                             }}
-                            whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                            className="group p-8 bg-surface border border-primary/5 rounded-[2rem] hover:shadow-2xl hover:shadow-primary/10 transition-shadow duration-500 relative"
+                            whileHover={{ y: -8, transition: { duration: 0.2, ease: "easeOut" } }}
+                            className="group p-8 bg-surface border border-primary/5 rounded-[2rem] hover:shadow-2xl hover:shadow-primary/10 transition-shadow duration-500 relative will-change-transform"
                         >
                             <div className="mb-6 inline-block p-4 bg-primary/[0.02] rounded-2xl group-hover:bg-secondary/10 transition-colors">
                                 {shift.icon}

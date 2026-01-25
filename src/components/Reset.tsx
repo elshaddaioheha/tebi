@@ -46,12 +46,12 @@ const Reset = () => {
                                 className="space-y-4 mb-10"
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true }}
+                                viewport={{ once: true, margin: "-30px" }}
                                 variants={{
                                     hidden: { opacity: 0 },
                                     visible: {
                                         opacity: 1,
-                                        transition: { staggerChildren: 0.1 }
+                                        transition: { staggerChildren: 0.08 }
                                     }
                                 }}
                             >
@@ -61,7 +61,7 @@ const Reset = () => {
                                         key={i}
                                         variants={{
                                             hidden: { opacity: 0, x: -10 },
-                                            visible: { opacity: 1, x: 0 }
+                                            visible: { opacity: 1, x: 0, transition: { duration: 0.4 } }
                                         }}
                                         className="flex items-center gap-3"
                                     >
@@ -78,11 +78,11 @@ const Reset = () => {
                                 {outcomes.map((outcome, i) => (
                                     <motion.div
                                         key={i}
-                                        initial={{ opacity: 0, x: 20 }}
+                                        initial={{ opacity: 0, x: 15 }}
                                         whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: i * 0.1 }}
-                                        className="flex items-center gap-6 p-6 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors border border-white/5"
+                                        viewport={{ once: true, margin: "-30px" }}
+                                        transition={{ delay: i * 0.08, duration: 0.5 }}
+                                        className="flex items-center gap-6 p-6 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors border border-white/5 will-change-transform"
                                     >
                                         <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center">
                                             {outcome.icon}
