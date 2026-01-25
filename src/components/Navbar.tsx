@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ChevronRight } from "lucide-react"; // Or just remove entirely if no other icons used
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
@@ -74,10 +74,27 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-primary"
+                    className="md:hidden text-primary w-10 h-10 relative flex flex-col items-center justify-center focus:outline-none z-50"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle Menu"
                 >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    <div className="w-6 h-4 relative flex flex-col justify-between items-center">
+                        <motion.span
+                            animate={isMobileMenuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                            className="w-full h-0.5 bg-primary rounded-full origin-center"
+                        />
+                        <motion.span
+                            animate={isMobileMenuOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="w-full h-0.5 bg-primary rounded-full"
+                        />
+                        <motion.span
+                            animate={isMobileMenuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                            className="w-full h-0.5 bg-primary rounded-full origin-center"
+                        />
+                    </div>
                 </button>
             </div>
 
@@ -85,28 +102,41 @@ const Navbar = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-100 flex flex-col p-6 gap-4 md:hidden"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-lg shadow-2xl border-t border-gray-100 flex flex-col p-8 gap-6 md:hidden overflow-hidden"
                     >
-                        {navLinks.map((link) => (
-                            <Link
+                        {navLinks.map((link, i) => (
+                            <motion.div
                                 key={link.name}
-                                href={link.href}
-                                className="text-primary text-lg font-medium py-2 border-b border-gray-50"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.1 + 0.2 }}
+                            >
+                                <Link
+                                    href={link.href}
+                                    className="text-primary text-2xl font-serif py-2 block border-b border-gray-50"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {link.name}
+                                </Link>
+                            </motion.div>
+                        ))}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                        >
+                            <Link
+                                href="#contact"
+                                className="bg-primary text-white text-center py-4 rounded-full font-bold text-lg mt-4 block shadow-lg shadow-primary/20"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                {link.name}
+                                Start Building
                             </Link>
-                        ))}
-                        <Link
-                            href="#contact"
-                            className="bg-primary text-white text-center py-3 rounded-lg font-bold mt-2"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            Start Building
-                        </Link>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
