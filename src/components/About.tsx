@@ -30,36 +30,47 @@ const About = () => {
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        variants={{
+                            hidden: { opacity: 0, x: 30 },
+                            visible: {
+                                opacity: 1,
+                                x: 0,
+                                transition: {
+                                    duration: 0.8,
+                                    staggerChildren: 0.1,
+                                    delayChildren: 0.2
+                                }
+                            }
+                        }}
                     >
-                        <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">The Institute</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-primary mb-8 leading-tight">
+                        <motion.span variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">The Institute</motion.span>
+                        <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="text-4xl md:text-5xl font-serif text-primary mb-8 leading-tight">
                             Meet the Institute
-                        </h2>
+                        </motion.h2>
                         <div className="space-y-6 text-lg text-primary/70 leading-relaxed">
-                            <p>
+                            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
                                 I run The Event Business Institute because I saw too many brilliant planners burning out before they could build a legacy.
-                            </p>
-                            <p>
+                            </motion.p>
+                            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
                                 I focus on the business of events—systems, strategy, pricing, and CEO-level thinking—so planners can grow without burning out.
-                            </p>
-                            <p className="font-serif text-2xl text-primary italic border-l-4 border-secondary pl-6 py-2">
+                            </motion.p>
+                            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="font-serif text-2xl text-primary italic border-l-4 border-secondary pl-6 py-2">
                                 &quot;This is not a space for hobbyists. This is for planners ready to build something stable.&quot;
-                            </p>
-                            <p>
+                            </motion.p>
+                            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
                                 Our mission is to bridge the gap between creative excellence and operational dominance, turning talented hustlers into visionary CEOs.
-                            </p>
+                            </motion.p>
                         </div>
 
-                        <div className="mt-12 flex items-center gap-6">
+                        <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="mt-12 flex items-center gap-6">
                             <div>
                                 <p className="font-serif text-xl text-primary font-bold">The Founder</p>
                                 <p className="text-secondary font-medium">Head of Strategy</p>
                             </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>

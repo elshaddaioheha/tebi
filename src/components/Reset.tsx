@@ -42,15 +42,34 @@ const Reset = () => {
                                 A structured 12-week transformation for event planners tired of the hustle and ready for the legacy.
                             </p>
 
-                            <div className="space-y-4 mb-10">
+                            <motion.div
+                                className="space-y-4 mb-10"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    visible: {
+                                        opacity: 1,
+                                        transition: { staggerChildren: 0.1 }
+                                    }
+                                }}
+                            >
                                 <p className="text-lg font-bold border-b border-white/10 pb-2 mb-6">Who This Is For:</p>
                                 {whoIsItFor.map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3">
+                                    <motion.div
+                                        key={i}
+                                        variants={{
+                                            hidden: { opacity: 0, x: -10 },
+                                            visible: { opacity: 1, x: 0 }
+                                        }}
+                                        className="flex items-center gap-3"
+                                    >
                                         <CheckCircle2 size={20} className="text-secondary" />
                                         <span className="text-white/90 text-lg">{item}</span>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
+                            </motion.div>
                         </div>
 
                         <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-12 rounded-3xl">

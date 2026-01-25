@@ -28,30 +28,60 @@ const Problem = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={{
+                            hidden: { opacity: 0, x: -30 },
+                            visible: {
+                                opacity: 1,
+                                x: 0,
+                                transition: {
+                                    duration: 0.8,
+                                    staggerChildren: 0.15,
+                                    when: "beforeChildren"
+                                }
+                            }
+                        }}
                     >
-                        <h2 className="text-4xl md:text-5xl font-serif text-primary mb-6">
+                        <motion.h2
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            className="text-4xl md:text-5xl font-serif text-primary mb-6"
+                        >
                             Talented, but Overwhelmed?
-                        </h2>
-                        <p className="text-lg md:text-xl text-primary/70 mb-8 leading-relaxed">
+                        </motion.h2>
+                        <motion.p
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            className="text-lg md:text-xl text-primary/70 mb-8 leading-relaxed"
+                        >
                             Many event planners are talented and hardworking yet still overwhelmed and underpaid.
                             The problem is not creativity—it is the absence of business structure.
-                        </p>
+                        </motion.p>
 
                         <div className="space-y-6">
                             {points.map((point, i) => (
-                                <div key={i} className="flex gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm border border-primary/5 flex items-center justify-center">
+                                <motion.div
+                                    key={i}
+                                    variants={{
+                                        hidden: { opacity: 0, x: -20 },
+                                        visible: { opacity: 1, x: 0 }
+                                    }}
+                                    className="flex gap-4 group"
+                                >
+                                    <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm border border-primary/5 flex items-center justify-center group-hover:bg-secondary/10 group-hover:scale-110 transition-all duration-300">
                                         {point.icon}
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-primary mb-1">{point.title}</h4>
+                                        <h4 className="text-xl font-bold text-primary mb-1 group-hover:text-secondary transition-colors duration-300">{point.title}</h4>
                                         <p className="text-primary/60">{point.desc}</p>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>

@@ -47,16 +47,28 @@ const Solution = () => {
                     {shifts.map((shift, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.2 }}
-                            className="group p-8 bg-surface border border-primary/5 rounded-[2rem] hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 relative"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            variants={{
+                                hidden: { opacity: 0, y: 40 },
+                                visible: {
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: {
+                                        duration: 0.8,
+                                        delay: i * 0.1,
+                                        ease: [0.16, 1, 0.3, 1]
+                                    }
+                                }
+                            }}
+                            whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                            className="group p-8 bg-surface border border-primary/5 rounded-[2rem] hover:shadow-2xl hover:shadow-primary/10 transition-shadow duration-500 relative"
                         >
                             <div className="mb-6 inline-block p-4 bg-primary/[0.02] rounded-2xl group-hover:bg-secondary/10 transition-colors">
                                 {shift.icon}
                             </div>
-                            <span className="block text-xs font-bold uppercase tracking-widest text-secondary mb-3">
+                            <span className="block text-sm font-bold uppercase tracking-widest text-secondary mb-3">
                                 {shift.tag}
                             </span>
                             <h3 className="text-2xl font-serif text-primary mb-4 group-hover:text-secondary transition-colors">
@@ -65,7 +77,7 @@ const Solution = () => {
                             <p className="text-primary/70 leading-relaxed mb-6">
                                 {shift.desc}
                             </p>
-                            <div className="flex items-center text-primary font-bold gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="flex items-center text-primary font-bold gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0">
                                 Learn more <ArrowRight size={16} />
                             </div>
                         </motion.div>

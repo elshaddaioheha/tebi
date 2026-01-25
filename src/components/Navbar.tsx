@@ -58,14 +58,15 @@ const Navbar = () => {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-primary/70 hover:text-secondary font-medium transition-colors"
+                            className="text-primary/70 hover:text-secondary font-medium transition-colors relative group"
                         >
                             {link.name}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full" />
                         </Link>
                     ))}
                     <Link
                         href="#contact"
-                        className="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-primary-light hover:scale-105 transition-all duration-300"
+                        className="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-primary-light hover:scale-105 active:scale-95 transition-all duration-300"
                     >
                         Start Building
                     </Link>
