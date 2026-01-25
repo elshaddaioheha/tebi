@@ -9,7 +9,7 @@ const Problem = () => {
         {
             icon: <Clock className="text-secondary" />,
             title: "The Constant Hustle",
-            desc: "Working 80-hour weeks but barely seeing the profit to justify it.",
+            desc: "Working 80 hours per week but barely seeing the profit to justify it.",
         },
         {
             icon: <Zap className="text-secondary" />,
