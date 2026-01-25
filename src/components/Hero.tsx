@@ -70,7 +70,7 @@ const Hero = () => {
                         }}
                         className="text-xl md:text-2xl text-primary/70 mb-12 max-w-3xl mx-auto leading-relaxed text-balance"
                     >
-                        Help emerging and scaling event planners stop hustling and start building structured, profitable event businesses.
+                        Helping emerging and scaling event planners to stop hustling and start building structured profitable event businesses.
                     </motion.p>
 
                     <motion.div
