@@ -36,7 +36,7 @@ const Reset = () => {
                                 Signature Offer
                             </motion.div>
                             <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">
-                                The Event Business Reset™
+                                The Event Business Reset
                             </h2>
                             <p className="text-xl text-white/70 mb-10 leading-relaxed">
                                 A structured 12-week transformation for event planners tired of the hustle and ready for the legacy.

@@ -36,7 +36,7 @@ const Solution = () => {
                         viewport={{ once: true }}
                         className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary mb-6"
                     >
-                        The Planner-to-CEO Framework™
+                        The Planner-to-CEO Framework
                     </motion.h2>
                     <p className="text-xl text-primary/60 max-w-2xl mx-auto">
                         Our methodology is designed to rebuild your business from the ground up, focusing on the fundamentals that drive sustainable growth.

@@ -35,30 +35,30 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div>
+                    <div className="lg:col-span-1">
                         <h4 className="font-bold uppercase tracking-widest text-secondary text-sm mb-8">Contact</h4>
                         <ul className="space-y-6">
                             <li className="flex items-start gap-4 text-white/60">
-                                <Mail size={20} className="text-secondary shrink-0" />
-                                <span>theeventbusinessinstitute@gmail.com</span>
+                                <Mail size={20} className="text-secondary shrink-0 mt-1" />
+                                <span className="break-words whitespace-normal">theeventbusinessinstitute@gmail.com</span>
                             </li>
                             <li className="flex items-start gap-4 text-white/60">
-                                <Phone size={20} className="text-secondary shrink-0" />
+                                <Phone size={20} className="text-secondary shrink-0 mt-1" />
                                 <span>08093000380</span>
                             </li>
                         </ul>
                     </div>
 
-                    <div>
+                    <div className="lg:col-span-1">
                         <h4 className="font-bold uppercase tracking-widest text-secondary text-sm mb-8">The Newsletter</h4>
                         <p className="text-white/60 mb-6 font-medium">Weekly CEO-level insights delivered to your inbox.</p>
                         <div className="flex bg-white/5 rounded-xl p-1 border border-white/10">
                             <input
                                 type="email"
                                 placeholder="CEO Email"
-                                className="bg-transparent border-none outline-none flex-grow px-4 text-sm"
+                                className="bg-transparent border-none outline-none flex-grow px-4 text-sm w-full"
                             />
-                            <button className="bg-secondary text-primary p-3 rounded-lg hover:bg-secondary-light transition-all">
+                            <button className="bg-secondary text-primary p-3 rounded-lg hover:bg-secondary-light transition-all shrink-0">
                                 <ArrowUpRight size={20} />
                             </button>
                         </div>
