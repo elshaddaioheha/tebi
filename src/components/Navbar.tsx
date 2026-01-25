@@ -22,6 +22,7 @@ const Navbar = () => {
     const navLinks = [
         { name: "Philosophy", href: "#philosophy" },
         { name: "The Reset", href: "#reset" },
+        { name: "Resources", href: "#resources" },
         { name: "About", href: "#about" },
         { name: "Contact", href: "#contact" },
     ];
