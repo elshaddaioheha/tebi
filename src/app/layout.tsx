@@ -15,6 +15,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "The Event Business Institute | Build Real Businesses",
   description: "Help emerging and scaling event planners stop hustling and start building structured, profitable event businesses.",
+  icons: {
+    icon: "/tebi-logo.png",
+  },
 };
 
 export default function RootLayout({

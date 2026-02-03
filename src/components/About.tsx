@@ -18,8 +18,8 @@ const About = () => {
                     >
                         <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl z-10 border-[12px] border-white">
                             <Image
-                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000" // Professional placeholder
-                                alt="Founder of TEBI"
+                                src="/ceo.jpg"
+                                alt="Dr. Emma Collins - CEO of TEBI"
                                 fill
                                 className="object-cover"
                             />
@@ -46,29 +46,29 @@ const About = () => {
                             }
                         }}
                     >
-                        <motion.span variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">The Institute</motion.span>
+                        <motion.span variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">The Visionary</motion.span>
                         <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="text-4xl md:text-5xl font-serif text-primary mb-8 leading-tight">
-                            Meet the Institute
+                            Meet Dr. Emma Collins
                         </motion.h2>
                         <div className="space-y-6 text-lg text-primary/70 leading-relaxed">
                             <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-                                I run The Event Business Institute because I saw too many brilliant planners burning out before they could build a legacy.
+                                Dr. Emma Collins is the visionary CEO of <strong>Diamondreams Events</strong> and <strong>Diamondreams Decor</strong>, based in Jos. With an unwavering commitment to excellence, she has built a legacy of transforming complex event logistics into seamless, premium experiences.
                             </motion.p>
                             <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-                                I focus on the business of events—systems, strategy, pricing, and CEO-level thinking—so planners can grow without burning out.
+                                Her journey is fueled by a passion for structural integrity in the event industry. She doesn&apos;t just plan events; she architects systems that allow creativity to thrive within a framework of operational dominance.
                             </motion.p>
                             <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="font-serif text-2xl text-primary italic border-l-4 border-secondary pl-6 py-2">
-                                &quot;This is not a space for hobbyists. This is for planners ready to build something stable.&quot;
+                                &quot;Sustainability in this business is not an accident—it is the result of intention, strategy, and CEO-level thinking.&quot;
                             </motion.p>
                             <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-                                Our mission is to bridge the gap between creative excellence and operational dominance, turning talented hustlers into visionary CEOs.
+                                Through TEBI, Dr. Collins bridges the gap between creative talent and business mastery, empowering the next generation of event leaders to move from chaos to calm, respected execution.
                             </motion.p>
                         </div>
 
                         <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="mt-12 flex items-center gap-6">
                             <div>
-                                <p className="font-serif text-xl text-primary font-bold">The Founder</p>
-                                <p className="text-secondary font-medium">Head of Strategy</p>
+                                <p className="font-serif text-xl text-primary font-bold">Dr. Emma Collins</p>
+                                <p className="text-secondary font-medium">Founder & CEO</p>
                             </div>
                         </motion.div>
                     </motion.div>

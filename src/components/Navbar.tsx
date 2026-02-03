@@ -35,22 +35,24 @@ const Navbar = () => {
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-3">
-                    <div className="relative w-12 h-12">
+                <Link href="/" className="flex items-center gap-4">
+                    <div className="relative w-16 h-16 md:w-20 md:h-20">
                         <Image
-                            src="/logo.png"
+                            src="/tebi-logo.png"
                             alt="TEBI Logo"
                             fill
                             className="object-contain"
                             priority
                         />
                     </div>
-                    <span className="font-serif text-lg md:text-xl font-bold tracking-tight text-primary hidden sm:block">
-                        THE EVENT BUSINESS INSTITUTE
-                    </span>
-                    <span className="font-serif text-lg font-bold tracking-tight text-primary sm:hidden">
-                        TEBI
-                    </span>
+                    <div className="flex flex-col">
+                        <span className="font-serif text-lg md:text-xl font-bold tracking-tight text-primary leading-none">
+                            TEBI
+                        </span>
+                        <span className="text-[10px] items-center uppercase tracking-[0.3em] text-secondary font-bold hidden sm:block">
+                            Institute
+                        </span>
+                    </div>
                 </Link>
 
                 {/* Desktop Navigation */}

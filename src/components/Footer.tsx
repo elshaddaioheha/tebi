@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Facebook, Mail, Phone, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
@@ -8,16 +9,26 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 border-b border-white/5 pb-20">
                     <div className="lg:col-span-1">
-                        <h3 className="text-2xl font-serif mb-6">TEBI</h3>
+                        <div className="relative w-24 h-24 mb-6">
+                            <Image
+                                src="/tebi-logo.png"
+                                alt="TEBI Logo"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
                         <p className="text-white/60 leading-relaxed mb-8">
                             Helping event planners build structured, profitable, and sustainable businesses.
                         </p>
                         <div className="flex gap-4">
-                            <a href="https://instagram.com/theeventbusinessinstitute" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
+                            <a href="https://instagram.com/theeventbusinessinstitute" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
                                 <Instagram size={20} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
+                            <a href="https://facebook.com/diamonddreamsevents" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
                                 <Facebook size={20} />
+                            </a>
+                            <a href="https://wa.me/2348093000380" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
+                                <Phone size={20} />
                             </a>
                         </div>
                     </div>

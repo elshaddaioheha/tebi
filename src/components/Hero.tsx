@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -43,6 +44,22 @@ const Hero = () => {
                         },
                     }}
                 >
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0, scale: 0.8 },
+                            visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }
+                        }}
+                        className="relative w-32 h-32 mx-auto mb-8"
+                    >
+                        <Image
+                            src="/tebi-logo.png"
+                            alt="The Event Business Institute Logo"
+                            fill
+                            className="object-contain"
+                            priority
+                        />
+                    </motion.div>
+
                     <motion.span
                         variants={{
                             hidden: { opacity: 0, y: 15 },
