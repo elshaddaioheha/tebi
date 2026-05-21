@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react"; // Or just remove entirely if no other icons used
+import ThemeToggle from "@/components/shared/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
@@ -20,11 +20,11 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: "Philosophy", href: "#philosophy" },
-        { name: "The Reset", href: "#reset" },
-        { name: "Resources", href: "#resources" },
-        { name: "About", href: "#about" },
-        { name: "Contact", href: "#contact" },
+        { name: "How It Works", href: "#how-it-works" },
+        { name: "Courses", href: "#courses" },
+        { name: "Learn Free", href: "#resources" },
+        { name: "Our Story", href: "#about" },
+        { name: "Talk to Us", href: "#contact" },
     ];
 
     return (
@@ -67,11 +67,12 @@ const Navbar = () => {
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full" />
                         </Link>
                     ))}
+                    <ThemeToggle />
                     <Link
                         href="#contact"
                         className="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-primary-light hover:scale-105 active:scale-95 transition-all duration-300"
                     >
-                        Start Building
+                        Get Started
                     </Link>
                 </div>
 
@@ -131,14 +132,18 @@ const Navbar = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
+                            className="space-y-3"
                         >
                             <Link
                                 href="#contact"
                                 className="bg-primary text-white text-center py-4 rounded-full font-bold text-lg mt-4 block shadow-lg shadow-primary/20"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                Start Building
+                                Get Started
                             </Link>
+                            <div className="flex justify-center pt-2">
+                                <ThemeToggle />
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}

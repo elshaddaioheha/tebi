@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer id="contact" className="bg-primary text-white pt-24 pb-12 px-6">
             <div className="max-w-7xl mx-auto">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 border-b border-white/5 pb-20">
+                <div className="grid md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.5fr_1.5fr] gap-12 mb-20 border-b border-white/5 pb-20">
                     <div className="lg:col-span-1">
                         <div className="relative w-24 h-24 mb-6">
                             <Image
@@ -36,10 +36,15 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold uppercase tracking-widest text-secondary text-sm mb-8">Navigation</h4>
                         <ul className="space-y-4">
-                            {["Philosophy", "The Reset", "About", "Success Stories"].map((item) => (
-                                <li key={item}>
-                                    <Link href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-white/60 hover:text-white transition-colors">
-                                        {item}
+                            {[
+                                { label: "How It Works", href: "#how-it-works" },
+                                { label: "Courses", href: "#courses" },
+                                { label: "Learn Free", href: "#resources" },
+                                { label: "Our Story", href: "#about" },
+                            ].map((item) => (
+                                <li key={item.label}>
+                                    <Link href={item.href} className="text-white/60 hover:text-white transition-colors">
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
@@ -51,7 +56,7 @@ const Footer = () => {
                         <ul className="space-y-6">
                             <li className="flex items-start gap-4 text-white/60">
                                 <Mail size={20} className="text-secondary shrink-0 mt-1" />
-                                <span className="break-words whitespace-normal">theeventbusinessinstitute@gmail.com</span>
+                                <span className="break-all">theeventbusinessinstitute@gmail.com</span>
                             </li>
                             <li className="flex items-start gap-4 text-white/60">
                                 <Phone size={20} className="text-secondary shrink-0 mt-1" />

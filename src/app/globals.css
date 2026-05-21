@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode for next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary: #0A1128;
   --color-primary-light: #1E293B;
@@ -16,31 +19,42 @@
   --animate-slide-up: slide-up 0.8s ease-out forwards;
 
   @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
+}
+
+@keyframes grow-bar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 :root {
   --background: #FAFAF5;
   --foreground: #0A1128;
+  --surface: #FFFFFF;
+  --surface-alt: #F4F4EF;
+  --border: #E5E5DD;
+  --muted: rgba(10, 17, 40, 0.6);
+}
+
+.dark {
+  --background: #0F0F0E;
+  --foreground: #F0EDE6;
+  --surface: #1A1A18;
+  --surface-alt: #242420;
+  --border: #2E2E2A;
+  --muted: rgba(240, 237, 230, 0.6);
+  /* Override Tailwind theme tokens for dark mode */
+  --color-background: #0F0F0E;
+  --color-surface: #1A1A18;
+  --color-primary: #F0EDE6;
+  --color-primary-light: #C8C4BB;
 }
 
 html {
