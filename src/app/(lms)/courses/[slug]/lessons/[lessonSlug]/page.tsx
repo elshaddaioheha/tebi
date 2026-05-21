@@ -41,7 +41,7 @@ export default async function LessonPage({ params }: Props) {
     where: { userId_lessonId: { userId, lessonId: lesson.id } },
   });
 
-  const allLessons = lesson.module.lessons;
+  const allLessons = lesson.module.lessons as { id: string; slug: string; title: string; order: number }[];
   const currentIndex = allLessons.findIndex((l) => l.id === lesson.id);
   const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
