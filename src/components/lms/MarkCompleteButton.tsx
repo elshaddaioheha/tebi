@@ -34,7 +34,7 @@ export default function MarkCompleteButton({ lessonId, initialCompleted }: Props
       className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all ${
         completed
           ? "bg-green-500/10 text-green-600 cursor-default"
-          : "bg-primary text-white hover:bg-primary-light active:scale-95"
+          : "bg-brand text-white hover:bg-brand-light active:scale-95"
       } disabled:opacity-60`}
     >
       <CheckCircle2 size={18} />

@@ -60,7 +60,7 @@ export default async function LessonPage({ params }: Props) {
                 href={`/courses/${slug}/lessons/${l.slug}`}
                 className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${
                   l.id === lesson.id
-                    ? "bg-primary text-white font-semibold"
+                    ? "bg-brand text-white font-semibold"
                     : "text-primary/60 hover:text-primary hover:bg-primary/5"
                 }`}
               >

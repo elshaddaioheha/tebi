@@ -11,7 +11,7 @@ export default async function LmsLayout({ children }: { children: React.ReactNod
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* LMS top bar */}
-      <header className="bg-primary text-white px-6 py-3 flex items-center justify-between">
+      <header className="bg-brand text-white px-6 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-10 h-10">
             <Image src="/tebi-logo.png" alt="TEBI" fill className="object-contain" />

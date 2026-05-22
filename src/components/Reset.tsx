@@ -19,9 +19,9 @@ const Reset = () => {
     ];
 
     return (
-        <section id="courses" className="py-24 px-6 bg-white overflow-hidden">
+        <section id="courses" className="py-24 px-6 bg-surface overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                <div className="relative p-8 md:p-16 bg-primary rounded-[3rem] text-white overflow-hidden shadow-2xl">
+                <div className="relative p-8 md:p-16 bg-brand rounded-[3rem] text-white overflow-hidden shadow-2xl">
                     {/* Static background highlights */}
                     <div className="absolute -top-24 -right-24 w-96 h-96 bg-secondary/20 rounded-full blur-[100px]" />
                     <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-[80px]" />

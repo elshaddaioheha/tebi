@@ -27,7 +27,7 @@ const Solution = () => {
     ];
 
     return (
-        <section className="py-24 px-6 relative overflow-hidden bg-white">
+        <section className="py-24 px-6 relative overflow-hidden bg-surface">
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-20">
                     <FadeIn>
@@ -46,7 +46,7 @@ const Solution = () => {
                     {shifts.map((shift, i) => (
                         <FadeIn key={i} delay={i * 100} className="h-full">
                             {/* hover:-translate-y-2 replaces framer-motion whileHover={{ y: -8 }} */}
-                            <div className="group p-8 bg-white border border-primary/5 rounded-[2rem] hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 relative h-full flex flex-col">
+                            <div className="group p-8 bg-surface border border-primary/5 rounded-[2rem] hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 relative h-full flex flex-col">
                                 <div className="mb-6 inline-block p-4 bg-primary/[0.02] rounded-2xl group-hover:bg-secondary/10 transition-colors">
                                     {shift.icon}
                                 </div>

@@ -45,7 +45,7 @@ const Problem = () => {
                             {points.map((point, i) => (
                                 <FadeIn key={i} delay={200 + i * 100}>
                                     <div className="flex gap-4 group">
-                                        <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm border border-primary/5 flex items-center justify-center group-hover:bg-secondary/10 group-hover:scale-110 transition-all duration-300">
+                                        <div className="flex-shrink-0 w-12 h-12 bg-surface rounded-xl shadow-sm border border-primary/5 flex items-center justify-center group-hover:bg-secondary/10 group-hover:scale-110 transition-all duration-300">
                                             {point.icon}
                                         </div>
                                         <div>
@@ -60,7 +60,7 @@ const Problem = () => {
 
                     {/* Right column — "Reality Gap" card */}
                     <FadeIn delay={150}>
-                        <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl shadow-primary/5 border border-primary/5 relative overflow-hidden">
+                        <div className="bg-surface p-8 md:p-12 rounded-[2rem] shadow-2xl shadow-primary/5 border border-primary/5 relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-4 opacity-10">
                                 <Construction size={120} />
                             </div>

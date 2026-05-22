@@ -47,7 +47,7 @@ const Hero = () => {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
                             href="#courses"
-                            className="w-full sm:w-auto px-10 py-5 bg-primary text-white text-lg font-bold rounded-full hover:bg-primary-light hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-primary/20"
+                            className="w-full sm:w-auto px-10 py-5 bg-brand text-white text-lg font-bold rounded-full hover:bg-brand-light hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-brand/20"
                         >
                             See What We Teach
                         </Link>

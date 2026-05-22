@@ -54,7 +54,7 @@ const Resources = () => {
                     {courses.map((course, i) => (
                         <FadeIn key={i} delay={i * 100} className="h-full">
                             {/* hover:-translate-y-2 replaces framer-motion whileHover={{ y: -10 }} */}
-                            <div className="bg-white p-10 rounded-[2.5rem] border border-primary/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative group flex flex-col h-full">
+                            <div className="bg-surface p-10 rounded-[2.5rem] border border-primary/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative group flex flex-col h-full">
                                 <div className="mb-8 inline-block p-5 bg-primary/[0.02] rounded-3xl group-hover:bg-secondary/10 transition-colors">
                                     {course.icon}
                                 </div>

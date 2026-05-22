@@ -31,7 +31,7 @@ const Navbar = () => {
         <nav
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 py-4",
-                isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm py-3" : "bg-transparent"
+                isScrolled ? "bg-surface/80 backdrop-blur-md shadow-sm py-3" : "bg-transparent"
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -70,7 +70,7 @@ const Navbar = () => {
                     <ThemeToggle />
                     <Link
                         href="#contact"
-                        className="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-primary-light hover:scale-105 active:scale-95 transition-all duration-300"
+                        className="bg-brand text-white px-6 py-2.5 rounded-full font-semibold hover:bg-brand-light hover:scale-105 active:scale-95 transition-all duration-300"
                     >
                         Get Started
                     </Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-lg shadow-2xl border-t border-gray-100 flex flex-col p-8 gap-6 md:hidden overflow-hidden"
+                        className="absolute top-full left-0 right-0 bg-surface/95 backdrop-blur-lg shadow-2xl border-t border-primary/5 flex flex-col p-8 gap-6 md:hidden overflow-hidden"
                     >
                         {navLinks.map((link, i) => (
                             <motion.div
@@ -136,7 +136,7 @@ const Navbar = () => {
                         >
                             <Link
                                 href="#contact"
-                                className="bg-primary text-white text-center py-4 rounded-full font-bold text-lg mt-4 block shadow-lg shadow-primary/20"
+                                className="bg-brand text-white text-center py-4 rounded-full font-bold text-lg mt-4 block shadow-lg shadow-brand/20"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Get Started

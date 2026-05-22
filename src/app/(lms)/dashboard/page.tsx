@@ -47,7 +47,7 @@ export default async function DashboardPage() {
           <p className="text-primary/50 mb-6">You haven&apos;t enrolled in any courses yet.</p>
           <Link
             href="/#courses"
-            className="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-light transition-colors"
+            className="bg-brand text-white px-8 py-3 rounded-full font-semibold hover:bg-brand-light transition-colors"
           >
             Browse Courses
           </Link>
@@ -68,7 +68,7 @@ export default async function DashboardPage() {
 
               <Link
                 href={`/courses/${course.slug}`}
-                className="mt-6 block text-center bg-primary text-white py-3 rounded-full font-semibold hover:bg-primary-light transition-colors"
+                className="mt-6 block text-center bg-brand text-white py-3 rounded-full font-semibold hover:bg-brand-light transition-colors"
               >
                 {completedLessons === 0 ? "Start Learning" : "Continue"}
               </Link>

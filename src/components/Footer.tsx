@@ -5,7 +5,7 @@ import { Instagram, Facebook, Mail, Phone, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer id="contact" className="bg-primary text-white pt-24 pb-12 px-6">
+        <footer id="contact" className="bg-brand text-white pt-24 pb-12 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.5fr_1.5fr] gap-12 mb-20 border-b border-white/5 pb-20">
                     <div className="lg:col-span-1">

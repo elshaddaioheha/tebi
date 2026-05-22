@@ -11,6 +11,9 @@
   --color-background: #FAFAF5;
   --color-surface: #FFFFFF;
   --color-accent: #E5D5B7;
+  /* Brand colors — never flip in dark mode. Used for CTAs, footer, hero buttons. */
+  --color-brand: #0A1128;
+  --color-brand-light: #1E293B;
 
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-plus-jakarta);
