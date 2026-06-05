@@ -57,12 +57,18 @@ export default function Navbar() {
                     ))}
                 </nav>
 
-                {/* Center wordmark */}
+                {/* Center logo */}
                 <Link
                     href="/"
-                    className="font-display font-light text-2xl md:text-3xl text-cream tracking-wide whitespace-nowrap flex-1 text-center md:flex-none"
+                    className="flex-1 text-center md:flex-none flex items-center justify-center"
                 >
-                    Diamond Dreams
+                    <img
+                        src="/dd-hero-logo.png"
+                        alt="Diamond Dreams"
+                        className={`transition-all duration-500 object-contain ${
+                            solid ? "h-10 w-auto" : "h-12 w-auto"
+                        }`}
+                    />
                 </Link>
 
                 {/* Right links (desktop) + mobile toggle */}
