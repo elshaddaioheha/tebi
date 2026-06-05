@@ -1,6 +1,6 @@
 export const siteMeta = {
-  name: "The Event Business Institute",
-  shortName: "TEBI",
+  name: "Diamond Dreams Conglomerate",
+  shortName: "Diamond Dreams",
   url: "https://theeventbusinessinstitute.com",
   description:
     "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses. Learn pricing, systems, and CEO-level strategy.",

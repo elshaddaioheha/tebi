@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash([ -f \"src/app/$p/page.tsx\" ])",
+      "Bash(npx prisma *)"
+    ]
+  }
+}

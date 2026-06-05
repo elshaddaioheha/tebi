@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Playfair_Display, Lato, Cormorant_Garamond } from "next/font/google";
+import SiteChrome from "@/components/global/SiteChrome";
 import "./globals.css";
 
+// Diamond Dreams type system
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-});
+}); // display
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const lato = Lato({
+  variable: "--font-lato",
   subsets: ["latin"],
-});
+  weight: ["300", "400", "700", "900"],
+}); // body
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+}); // accent
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://theeventbusinessinstitute.com"),
   title: {
-    default: "TEBI — Event Business Training for Planners in Nigeria & Africa",
-    template: "%s | TEBI",
+    default: "Diamond Dreams Conglomerate",
+    template: "%s | Diamond Dreams Conglomerate",
   },
   description:
     "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses. Learn pricing, systems, and CEO-level strategy.",
@@ -32,7 +40,7 @@ export const metadata: Metadata = {
     "Dr Emma Collins TEBI",
   ],
   authors: [{ name: "Dr. Emma Collins" }],
-  creator: "The Event Business Institute",
+  creator: "Diamond Dreams Conglomerate",
   robots: {
     index: true,
     follow: true,
@@ -40,23 +48,23 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/" },
   openGraph: {
-    title: "TEBI — Event Business Training for Planners in Nigeria & Africa",
+    title: "Diamond Dreams Conglomerate",
     description:
       "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses.",
     url: "https://theeventbusinessinstitute.com",
-    siteName: "The Event Business Institute",
+    siteName: "Diamond Dreams Conglomerate",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TEBI — Event Business Training for Planners in Nigeria & Africa",
+    title: "Diamond Dreams Conglomerate",
     description:
       "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses.",
     images: ["/og-image.jpg"],
   },
   icons: {
-    icon: "/tebi-logo.png",
+    icon: "/ddlogo-dark.JPG",
   },
 };
 
@@ -118,11 +126,14 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfair.variable} ${plusJakarta.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${playfair.variable} ${lato.variable} ${cormorant.variable} font-body antialiased bg-cream text-navy`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        {/*
+          Master layout for the umbrella brand. SiteChrome mounts the global
+          Navbar/Footer across every pillar (and hides them on auth screens
+          and the authenticated academy app, which carry their own chrome).
+        */}
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

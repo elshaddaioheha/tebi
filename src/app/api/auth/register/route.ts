@@ -3,8 +3,11 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 
 export async function POST(req: NextRequest) {
-  const { name, email, password } = await req.json();
+  const { firstName, lastName, email, password } = await req.json();
 
+  if (!firstName || !lastName) {
+    return NextResponse.json({ error: "First and last name are required." }, { status: 400 });
+  }
   if (!email || !password) {
     return NextResponse.json({ error: "Email and password are required." }, { status: 400 });
   }
@@ -19,8 +22,8 @@ export async function POST(req: NextRequest) {
 
   const passwordHash = await bcrypt.hash(password, 12);
   const user = await db.user.create({
-    data: { name, email, passwordHash },
-    select: { id: true, email: true, name: true },
+    data: { firstName, lastName, email, passwordHash },
+    select: { id: true, email: true, firstName: true, lastName: true },
   });
 
   return NextResponse.json({ user }, { status: 201 });

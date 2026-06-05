@@ -34,8 +34,8 @@ export async function GET(req: NextRequest) {
   });
 
   const destination = course
-    ? `/courses/${course.slug}`
-    : "/dashboard";
+    ? `/academy/courses/${course.slug}`
+    : "/academy/dashboard";
 
   return NextResponse.redirect(new URL(destination, req.url));
 }
