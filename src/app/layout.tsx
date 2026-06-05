@@ -24,8 +24,8 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://theeventbusinessinstitute.com"),
   title: {
-    default: "TEBI — Event Business Training for Planners in Nigeria & Africa",
-    template: "%s | TEBI",
+    default: "Diamond Dreams Conglomerate",
+    template: "%s | Diamond Dreams Conglomerate",
   },
   description:
     "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses. Learn pricing, systems, and CEO-level strategy.",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "Dr Emma Collins TEBI",
   ],
   authors: [{ name: "Dr. Emma Collins" }],
-  creator: "The Event Business Institute",
+  creator: "Diamond Dreams Conglomerate",
   robots: {
     index: true,
     follow: true,
@@ -48,17 +48,17 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/" },
   openGraph: {
-    title: "TEBI — Event Business Training for Planners in Nigeria & Africa",
+    title: "Diamond Dreams Conglomerate",
     description:
       "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses.",
     url: "https://theeventbusinessinstitute.com",
-    siteName: "The Event Business Institute",
+    siteName: "Diamond Dreams Conglomerate",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TEBI — Event Business Training for Planners in Nigeria & Africa",
+    title: "Diamond Dreams Conglomerate",
     description:
       "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses.",
     images: ["/og-image.jpg"],
