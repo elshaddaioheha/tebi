@@ -1,26 +1,56 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Diamond Dreams — Unified Multi-Pillar Schema
+// The User sits at the centre of the ecosystem, connected to every pillar:
+//   • Academy   → Course / Module / Lesson / Enrollment / LessonProgress
+//   • Decor     → Booking (DECOR_CONSULTATION)
+//   • Bridal    → Booking (BRIDAL_FITTING) + Product / Order (e-commerce)
+//   • Foundation→ Donation / Application
+// Monetary amounts are stored in kobo (NGN × 100) as Int. Paid transactions
+// carry an optional Paystack reference.
+// ─────────────────────────────────────────────────────────────────────────────
+
 generator client {
   provider = "prisma-client-js"
 }
 
+// Prisma 7: connection URLs live in prisma.config.ts (migrations) and in the
+// PrismaClient driver adapter (runtime, see src/lib/db.ts) — NOT here.
 datasource db {
   provider = "postgresql"
 }
 
+// ─── Identity ────────────────────────────────────────────────────────────────
+
 model User {
-  id           String       @id @default(cuid())
-  email        String       @unique
-  name         String?
+  id           String   @id @default(cuid())
+  email        String   @unique
+  firstName    String
+  lastName     String
   passwordHash String
-  role         Role         @default(STUDENT)
-  enrollments  Enrollment[]
-  progress     Progress[]
-  createdAt    DateTime     @default(now())
+  role         Role     @default(STUDENT)
+
+  // Academy
+  enrollments    Enrollment[]
+  lessonProgress LessonProgress[]
+
+  // Services & commerce
+  bookings Booking[]
+  orders   Order[]
+
+  // Foundation
+  donations    Donation[]
+  applications Application[]
+
+  createdAt DateTime @default(now())
 }
 
 enum Role {
   STUDENT
+  CUSTOMER
   ADMIN
 }
+
+// ─── Academy (LMS) ───────────────────────────────────────────────────────────
 
 model Course {
   id          String       @id @default(cuid())
@@ -45,31 +75,31 @@ model Module {
 }
 
 model Lesson {
-  id       String     @id @default(cuid())
+  id       String           @id @default(cuid())
   moduleId String
-  module   Module     @relation(fields: [moduleId], references: [id])
+  module   Module           @relation(fields: [moduleId], references: [id])
   slug     String
   title    String
-  body     String     @db.Text
-  videoId  String?    // Bunny.net video ID
-  duration Int?       // seconds
+  body     String           @db.Text
+  videoId  String?          // Bunny.net video ID
+  duration Int?             // seconds
   order    Int
-  progress Progress[]
+  progress LessonProgress[]
 }
 
 model Enrollment {
-  id         String   @id @default(cuid())
-  userId     String
-  user       User     @relation(fields: [userId], references: [id])
-  courseId   String
-  course     Course   @relation(fields: [courseId], references: [id])
-  paystackRef String? @unique // Paystack transaction reference
-  enrolledAt DateTime @default(now())
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id])
+  paystackRef String?  @unique // Paystack transaction reference
+  enrolledAt  DateTime @default(now())
 
   @@unique([userId, courseId])
 }
 
-model Progress {
+model LessonProgress {
   id          String    @id @default(cuid())
   userId      String
   user        User      @relation(fields: [userId], references: [id])
@@ -79,4 +109,110 @@ model Progress {
   completedAt DateTime?
 
   @@unique([userId, lessonId])
+}
+
+// ─── Services — Decor & Bridal bookings ──────────────────────────────────────
+
+model Booking {
+  id          String        @id @default(cuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  type        BookingType
+  status      BookingStatus @default(REQUESTED)
+  scheduledAt DateTime?
+  notes       String?       @db.Text
+  amount      Int           @default(0) // in kobo — 0 = free consultation
+  paystackRef String?       @unique // Paystack transaction reference
+  createdAt   DateTime      @default(now())
+}
+
+enum BookingType {
+  DECOR_CONSULTATION
+  BRIDAL_FITTING
+}
+
+enum BookingStatus {
+  REQUESTED
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+// ─── E-commerce — Bridal boutique ────────────────────────────────────────────
+
+model Product {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  name        String
+  description String      @db.Text
+  price       Int         // in kobo (NGN × 100)
+  imageUrl    String?
+  category    String?     // pillar / collection tag (e.g. "bridal")
+  stock       Int?        // null = unlimited / made-to-order
+  published   Boolean     @default(false)
+  orderItems  OrderItem[]
+  createdAt   DateTime    @default(now())
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  items       OrderItem[]
+  total       Int         // in kobo — sum of line items at time of purchase
+  status      OrderStatus @default(PENDING)
+  paystackRef String?     @unique // Paystack transaction reference
+  createdAt   DateTime    @default(now())
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int     @default(1)
+  unitPrice Int     // in kobo — price snapshot at purchase time
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FULFILLED
+  CANCELLED
+}
+
+// ─── Foundation — Donations & Applications ───────────────────────────────────
+
+model Donation {
+  id          String   @id @default(cuid())
+  userId      String?  // optional — supports anonymous / guest donations
+  user        User?    @relation(fields: [userId], references: [id])
+  donorName   String?
+  donorEmail  String?
+  amount      Int      // in kobo (NGN × 100)
+  message     String?  @db.Text
+  anonymous   Boolean  @default(false)
+  paystackRef String?  @unique // Paystack transaction reference
+  createdAt   DateTime @default(now())
+}
+
+model Application {
+  id            String            @id @default(cuid())
+  userId        String?           // optional — supports public / guest applicants
+  user          User?             @relation(fields: [userId], references: [id])
+  applicantName String
+  email         String
+  phone         String?
+  program       String            // e.g. "LEAP"
+  motivation    String            @db.Text
+  status        ApplicationStatus @default(PENDING)
+  createdAt     DateTime          @default(now())
+}
+
+enum ApplicationStatus {
+  PENDING
+  REVIEWING
+  ACCEPTED
+  REJECTED
 }

@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not enrolled in this course." }, { status: 403 });
   }
 
-  const progress = await db.progress.upsert({
+  const progress = await db.lessonProgress.upsert({
     where: { userId_lessonId: { userId: session.user.id, lessonId } },
     create: { userId: session.user.id, lessonId, completed: true, completedAt: new Date() },
     update: { completed: true, completedAt: new Date() },

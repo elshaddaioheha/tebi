@@ -7,7 +7,8 @@ import Image from "next/image";
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,7 +22,7 @@ export default function RegisterPage() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ firstName, lastName, email, password }),
     });
 
     const data = await res.json();
@@ -52,16 +53,29 @@ export default function RegisterPage() {
               {error}
             </p>
           )}
-          <div>
-            <label className="block text-sm font-semibold text-primary mb-1.5">Full Name</label>
-            <input
-              type="text"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 border border-primary/15 rounded-xl bg-surface text-primary outline-none focus:border-secondary transition-colors"
-              placeholder="Your name"
-            />
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-primary mb-1.5">First Name</label>
+              <input
+                type="text"
+                required
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full px-4 py-3 border border-primary/15 rounded-xl bg-surface text-primary outline-none focus:border-secondary transition-colors"
+                placeholder="First name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-primary mb-1.5">Last Name</label>
+              <input
+                type="text"
+                required
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full px-4 py-3 border border-primary/15 rounded-xl bg-surface text-primary outline-none focus:border-secondary transition-colors"
+                placeholder="Last name"
+              />
+            </div>
           </div>
           <div>
             <label className="block text-sm font-semibold text-primary mb-1.5">Email</label>
