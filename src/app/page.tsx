@@ -130,13 +130,13 @@ export default function MasterPortal() {
 
         {/* 03 — The Academy / TEBI (image left, text right) */}
         <motion.div {...rowReveal} className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-6 relative h-[60vh] md:h-[70vh]">
+          <div className="md:col-span-6 relative h-[40vh] md:h-[45vh] flex items-center justify-center">
             <Image
-              src="/ceo.jpg"
-              alt="The Event Business Institute"
+              src="/tebi-logo.png"
+              alt="The Event Business Institute Logo"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-top"
+              className="object-contain"
             />
           </div>
           <div className="md:col-span-4 md:col-start-8">
@@ -175,6 +175,58 @@ export default function MasterPortal() {
           >
             Support the Cause
           </Link>
+        </motion.div>
+      </section>
+
+      {/* ── 05 — The Visionary ──────────────────────────────── */}
+      <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+        <motion.div {...rowReveal} className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* CEO photo */}
+          <div className="md:col-span-6 relative pt-8 pl-8 pb-8">
+            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl z-10 border-[12px] border-white">
+              <Image
+                src="/ceo.jpg"
+                alt="Dr. Emma Collins - CEO of Diamond Dreams"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute top-4 left-4 w-32 h-32 border-t-4 border-l-4 border-gold z-0" />
+            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 rounded-full z-0 blur-2xl" />
+          </div>
+
+          {/* Text column */}
+          <div className="md:col-span-6">
+            <span className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-4 block">
+              The Visionary
+            </span>
+            <h2 className="font-display font-light text-5xl text-navy mb-8 leading-tight">
+              Meet Dr. Emma Collins
+            </h2>
+            <div className="space-y-6 font-body text-base text-navy/80 leading-relaxed">
+              <p>
+                Dr. Emma Collins is the visionary CEO of <strong>Diamondreams Events</strong> and <strong>Diamondreams Decor</strong>, based in Jos. With an unwavering commitment to excellence, she has built a legacy of transforming complex event logistics into seamless, premium experiences.
+              </p>
+              <p>
+                Her journey is fueled by a passion for structural integrity in the event industry. She doesn&apos;t just plan events; she architects systems that allow creativity to thrive within a framework of operational dominance.
+              </p>
+              <p className="font-accent italic text-2xl text-navy border-l-4 border-gold pl-6 py-2">
+                &quot;Sustainability in this business is not an accident—it is the result of intention, strategy, and CEO-level thinking.&quot;
+              </p>
+              <p>
+                Through TEBI, Dr. Collins bridges the gap between creative talent and business mastery, empowering the next generation of event leaders to move from chaos to calm, respected execution.
+              </p>
+            </div>
+
+            <div className="mt-12 flex items-center gap-6">
+              <div>
+                <p className="font-display text-xl text-navy font-bold">Dr. Emma Collins</p>
+                <p className="font-body text-xs uppercase tracking-wider text-gold font-medium">Founder &amp; CEO</p>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </section>
     </div>

@@ -4,7 +4,6 @@ import Problem from "@/components/academy/Problem";
 import Solution from "@/components/academy/Solution";
 import Reset from "@/components/academy/Reset";
 import Resources from "@/components/academy/Resources";
-import About from "@/components/academy/About";
 
 export const metadata: Metadata = {
   // Absolute title avoids the root "%s | TEBI" template producing "TEBI | TEBI".
@@ -23,7 +22,6 @@ export default function AcademyLandingPage() {
       <Solution />
       <Reset />
       <Resources />
-      <About />
     </main>
   );
 }
