@@ -1,10 +1,17 @@
 export const siteMeta = {
   name: "Diamond Dreams Conglomerate",
   shortName: "Diamond Dreams",
-  url: "https://theeventbusinessinstitute.com",
+  url: "https://diamonddreamsgroup.com",
   description:
-    "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses. Learn pricing, systems, and CEO-level strategy.",
+    "Diamond Dreams Conglomerate is a luxury event, lifestyle, and educational brand incorporating Diamond Dreams Events, Diamond Dreams Decor, Diamond Dreams Bridal and Flower, Diamond Dreams Foundation (LEAP), and The Event Business Institute (TEBI).",
   keywords: [
+    "diamond dreams events",
+    "diamond dreams decor",
+    "diamond dreams bridal and flower",
+    "diamond dreams foundation",
+    "the event business institute",
+    "TEBI",
+    "LEAP",
     "event planning business Nigeria",
     "event planning courses Africa",
     "how to price event planning services",
@@ -13,6 +20,7 @@ export const siteMeta = {
     "profitable event business",
     "event planning systems",
     "Dr Emma Collins TEBI",
+    "Diamond Dreams Conglomerate",
   ],
   ogImage: "/og-image.jpg",
   twitter: "@TEBIInstitute",

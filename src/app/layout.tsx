@@ -22,14 +22,21 @@ const cormorant = Cormorant_Garamond({
 }); // accent
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://theeventbusinessinstitute.com"),
+  metadataBase: new URL("https://diamonddreamsgroup.com"),
   title: {
     default: "Diamond Dreams Conglomerate",
     template: "%s | Diamond Dreams Conglomerate",
   },
   description:
-    "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses. Learn pricing, systems, and CEO-level strategy.",
+    "Diamond Dreams Conglomerate is a luxury event, lifestyle, and educational brand incorporating Diamond Dreams Events, Diamond Dreams Decor, Diamond Dreams Bridal and Flower, Diamond Dreams Foundation (LEAP), and The Event Business Institute (TEBI).",
   keywords: [
+    "diamond dreams events",
+    "diamond dreams decor",
+    "diamond dreams bridal and flower",
+    "diamond dreams foundation",
+    "the event business institute",
+    "TEBI",
+    "LEAP",
     "event planning business Nigeria",
     "event planning courses Africa",
     "how to price event planning services",
@@ -38,6 +45,7 @@ export const metadata: Metadata = {
     "profitable event business",
     "event planning systems",
     "Dr Emma Collins TEBI",
+    "Diamond Dreams Conglomerate",
   ],
   authors: [{ name: "Dr. Emma Collins" }],
   creator: "Diamond Dreams Conglomerate",
@@ -50,8 +58,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Diamond Dreams Conglomerate",
     description:
-      "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses.",
-    url: "https://theeventbusinessinstitute.com",
+      "Diamond Dreams Conglomerate is a luxury event, lifestyle, and educational brand incorporating Diamond Dreams Events, Diamond Dreams Decor, Diamond Dreams Bridal and Flower, Diamond Dreams Foundation (LEAP), and The Event Business Institute (TEBI).",
+    url: "https://diamonddreamsgroup.com",
     siteName: "Diamond Dreams Conglomerate",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     type: "website",
@@ -60,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Diamond Dreams Conglomerate",
     description:
-      "Online courses and coaching for event planners in Nigeria and Africa who want to build profitable, structured businesses.",
+      "Diamond Dreams Conglomerate is a luxury event, lifestyle, and educational brand incorporating Diamond Dreams Events, Diamond Dreams Decor, Diamond Dreams Bridal and Flower, Diamond Dreams Foundation (LEAP), and The Event Business Institute (TEBI).",
     images: ["/og-image.jpg"],
   },
   icons: {
@@ -73,10 +81,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://theeventbusinessinstitute.com/#org",
-      name: "The Event Business Institute",
-      url: "https://theeventbusinessinstitute.com",
-      logo: "https://theeventbusinessinstitute.com/tebi-logo.png",
+      "@id": "https://diamonddreamsgroup.com/#org",
+      name: "Diamond Dreams Conglomerate",
+      url: "https://diamonddreamsgroup.com",
+      logo: "https://diamonddreamsgroup.com/dd-hero-logo.png",
       sameAs: [
         "https://instagram.com/theeventbusinessinstitute",
         "https://facebook.com/diamonddreamsevents",
@@ -86,20 +94,20 @@ const jsonLd = {
       "@type": "EducationalOrganization",
       name: "The Event Business Institute",
       description:
-        "Training and coaching for event planning entrepreneurs in Nigeria and Africa",
+        "Training and coaching for event planning entrepreneurs in Nigeria and Africa, a subsidiary of Diamond Dreams Conglomerate.",
       offers: [
         {
           "@type": "Course",
           name: "Introduction to Event Planning Business",
           description: "Build your event business foundation from the ground up.",
-          provider: { "@id": "https://theeventbusinessinstitute.com/#org" },
+          provider: { "@id": "https://diamonddreamsgroup.com/#org" },
         },
         {
           "@type": "Course",
           name: "The Authority Event Planner™",
           description:
             "Systems and strategy for established planners ready to scale.",
-          provider: { "@id": "https://theeventbusinessinstitute.com/#org" },
+          provider: { "@id": "https://diamonddreamsgroup.com/#org" },
         },
       ],
     },
@@ -107,7 +115,7 @@ const jsonLd = {
       "@type": "Person",
       name: "Dr. Emma Collins",
       jobTitle: "Founder & CEO",
-      worksFor: { "@id": "https://theeventbusinessinstitute.com/#org" },
+      worksFor: { "@id": "https://diamonddreamsgroup.com/#org" },
     },
   ],
 };
