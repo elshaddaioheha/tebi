@@ -57,10 +57,10 @@ export default function Navbar() {
                     ))}
                 </nav>
 
-                {/* Center logo */}
+                {/* Center/Left logo */}
                 <Link
                     href="/"
-                    className="flex-1 text-center md:flex-none flex items-center justify-center"
+                    className="flex-1 flex items-center justify-start md:justify-center md:flex-none"
                 >
                     <img
                         src="/dd-hero-logo.png"
