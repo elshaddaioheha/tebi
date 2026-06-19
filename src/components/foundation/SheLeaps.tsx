@@ -1,8 +1,15 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Award, Compass, HeartHandshake } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const PROGRAMS = [
   {
@@ -23,8 +30,39 @@ const PROGRAMS = [
 ];
 
 export default function SheLeaps() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // Reveal text block
+    gsap.from(".sheleaps-left", {
+      opacity: 0,
+      x: -40,
+      duration: 1.0,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      }
+    });
+
+    // Reveal right program cards in stagger
+    gsap.from(".sheleaps-card", {
+      opacity: 0,
+      x: 40,
+      stagger: 0.2,
+      duration: 1.0,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      }
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className="py-24 md:py-32 bg-[#FFF3F0] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
+    <section ref={containerRef} className="py-24 md:py-32 bg-[#FFF3F0] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
       {/* Abstract elegant shapes */}
       <div className="absolute top-12 left-10 w-[500px] h-[500px] bg-white/40 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
@@ -32,7 +70,7 @@ export default function SheLeaps() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Text/Header Column */}
-          <div className="lg:col-span-5">
+          <div className="sheleaps-left lg:col-span-5">
             <span className="font-body text-[10px] uppercase tracking-[0.25em] text-[#C8A24B] font-bold mb-4 block">
               Specialized Initiative
             </span>
@@ -67,16 +105,12 @@ export default function SheLeaps() {
 
           {/* Program list cards */}
           <div className="lg:col-span-7 space-y-6">
-            {PROGRAMS.map((prog, index) => {
+            {PROGRAMS.map((prog) => {
               const Icon = prog.icon;
               return (
-                <motion.div
+                <div
                   key={prog.title}
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  className="bg-white/70 hover:bg-white p-6 md:p-8 rounded-[2rem] border border-[#0B1F3A]/5 hover:border-gold/20 hover:shadow-xl hover:shadow-[#0B1F3A]/5 transition-all duration-300 flex flex-col md:flex-row items-start gap-6"
+                  className="sheleaps-card bg-white/70 hover:bg-white p-6 md:p-8 rounded-[2rem] border border-[#0B1F3A]/5 hover:border-gold/20 hover:shadow-xl hover:shadow-[#0B1F3A]/5 transition-all duration-300 flex flex-col md:flex-row items-start gap-6"
                 >
                   <div className="p-4 bg-[#FFF5F2] text-[#C8A24B] rounded-2xl shrink-0">
                     <Icon size={22} />
@@ -89,7 +123,7 @@ export default function SheLeaps() {
                       {prog.desc}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
