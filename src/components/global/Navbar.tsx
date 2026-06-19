@@ -12,7 +12,7 @@ const LEFT_LINKS = [
 
 const RIGHT_LINKS = [
     { name: "The Academy", href: "/academy" },
-    { name: "Foundation", href: "/foundation" },
+    { name: "LEAP", href: "/foundation/leap" },
 ];
 
 const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS];

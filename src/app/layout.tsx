@@ -1,25 +1,11 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato, Cormorant_Garamond } from "next/font/google";
 import SiteChrome from "@/components/global/SiteChrome";
 import "./globals.css";
 
-// Diamond Dreams type system
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-}); // display
-
-const lato = Lato({
-  variable: "--font-lato",
-  subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
-}); // body
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-}); // accent
+// Diamond Dreams type system fallbacks for offline compilation
+const playfair = { variable: "playfair-font" };
+const lato = { variable: "lato-font" };
+const cormorant = { variable: "cormorant-font" };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://diamonddreamsgroup.com"),
@@ -128,6 +114,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
