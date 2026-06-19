@@ -3,6 +3,7 @@
 import React from "react";
 import { BookOpen, Lock, Sparkles } from "lucide-react";
 import FadeIn from "@/components/global/FadeIn";
+import Link from "next/link";
 
 const Resources = () => {
     const courses = [
@@ -11,6 +12,7 @@ const Resources = () => {
             subtitle: "Building your foundation from the ground up.",
             desc: "The essential curriculum for aspiring planners ready to turn their passion into a structured, profitable business.",
             tier: "Beginner",
+            slug: "intro-to-event-planning",
             icon: <BookOpen className="w-8 h-8 text-secondary" />,
         },
         {
@@ -18,6 +20,7 @@ const Resources = () => {
             subtitle: "Moving from chaos-driven planning to calm, premium execution.",
             desc: "For existing planners looking to stop the hustle and start leading with systems, strategy, and authority.",
             tier: "Professional",
+            slug: "authority-event-planner",
             icon: <Sparkles className="w-8 h-8 text-secondary" />,
         },
         {
@@ -25,6 +28,7 @@ const Resources = () => {
             subtitle: "The Elite Standard in Premium Event Execution.",
             desc: "The final tier for veteran planners ready to dominate the market and build a sustainable legacy brand.",
             tier: "Elite Mastery",
+            slug: "authority-event-planner-mastery",
             icon: <Lock className="w-8 h-8 text-secondary" />,
         },
     ];
@@ -74,11 +78,14 @@ const Resources = () => {
 
                                 <div className="pt-6 border-t border-primary/5 mt-auto flex items-center justify-between">
                                     <span className="text-xs font-bold uppercase tracking-widest text-primary/40">
-                                        Status
+                                        Curriculum
                                     </span>
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-secondary px-4 py-2 bg-secondary/10 rounded-full">
-                                        Coming Soon
-                                    </span>
+                                    <Link
+                                        href={`/academy/courses/${course.slug}`}
+                                        className="text-xs font-bold uppercase tracking-[0.2em] text-secondary hover:text-secondary-light hover:underline transition-all cursor-pointer"
+                                    >
+                                        Learn More →
+                                    </Link>
                                 </div>
                             </div>
                         </FadeIn>

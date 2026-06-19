@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
+import LeapPageContent from "@/components/foundation/LeapPageContent";
 
 export const metadata: Metadata = {
-  title: "LEAP | Foundation",
+  title: "LEAP — Leadership, Empowerment, Entrepreneurship, Action & Purpose",
+  description:
+    "The Emma Collins Center for LEAP (a Diamond Dreams Foundation initiative) — empowering next-generation leaders and creative entrepreneurs to scale their ventures and make a meaningful impact.",
 };
 
 export default function FoundationLeapPage() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-      <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-4">
-        Foundation Initiative
-      </span>
-      <h1 className="text-4xl md:text-5xl font-serif text-foreground">LEAP</h1>
-      <p className="mt-4 text-foreground/60 max-w-xl">
-        This initiative is coming soon.
-      </p>
+    <main className="min-h-screen">
+      <LeapPageContent />
     </main>
   );
 }

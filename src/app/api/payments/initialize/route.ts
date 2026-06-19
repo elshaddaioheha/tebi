@@ -26,7 +26,8 @@ export async function POST(req: NextRequest) {
   }
 
   const reference = `tebi_${Date.now()}_${session.user.id.slice(-6)}`;
-  const callbackUrl = `${process.env.NEXTAUTH_URL}/api/payments/verify?reference=${reference}`;
+  const host = process.env.NEXTAUTH_URL || `${req.nextUrl.protocol}//${req.nextUrl.host}`;
+  const callbackUrl = `${host.replace(/\/$/, "")}/api/payments/verify?reference=${reference}`;
 
   const paystackRes = await fetch("https://api.paystack.co/transaction/initialize", {
     method: "POST",
@@ -48,5 +49,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Payment initialisation failed." }, { status: 502 });
   }
 
-  return NextResponse.json({ authorizationUrl: data.data.authorization_url });
+  return NextResponse.json({ 
+    authorizationUrl: data.data.authorization_url,
+    accessCode: data.data.access_code,
+    reference
+  });
 }

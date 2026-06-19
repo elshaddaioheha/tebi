@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -28,21 +30,49 @@ const ctaLink =
   "font-body text-[10px] uppercase tracking-widest border-b border-navy pb-1 hover:text-gold hover:border-gold transition-colors inline-block";
 
 export default function MasterPortal() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const slides = [
+    {
+      title: "The LEAP Foundation",
+      subtitle: "Empowering Next Generation Creatives",
+      desc: "Empowering the next generation of young creatives and entrepreneurs to build sustainable, structured futures.",
+      linkText: "Support the Cause",
+      linkUrl: "/foundation/leap",
+    },
+    {
+      title: "SheLeaps Initiative",
+      subtitle: "Leadership • Entrepreneurship • Empowerment • Action • Purpose",
+      desc: "A targeted standard mapping out mentorship, resource mobilization, and scaling for creative female leaders and business visionaries.",
+      linkText: "Explore SheLeaps",
+      linkUrl: "/foundation/leap",
+    },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-cream text-navy">
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
-        <Image
-          src="/bridal1.JPG"
-          alt="A Diamond Dreams celebration"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* navy overlays for legibility + to ground the watermark */}
-        <div className="absolute inset-0 bg-navy/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-navy/40" />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/bride_and_groom1.JPG"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0"
+        >
+          <source src="/diamonddreamshero_video.mp4" type="video/mp4" />
+        </video>
+        {/* natural brightness: subtler overlays for clean contrast without heavy darkening */}
+        <div className="absolute inset-0 bg-navy/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-navy/20" />
 
         <motion.div
           className="relative z-10 text-center"
@@ -80,11 +110,11 @@ export default function MasterPortal() {
         <motion.div {...rowReveal} className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center mb-24 md:mb-32">
           <div className="md:col-span-6 relative h-[60vh] md:h-[70vh]">
             <Image
-              src="/bride_and_groom1.JPG"
+              src="/bridal1.JPG"
               alt="Bridal styling by Diamond Dreams"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
           <div className="md:col-span-4 md:col-start-8">
@@ -158,24 +188,83 @@ export default function MasterPortal() {
       </section>
 
       {/* ── 04 — Foundation band ─────────────────────────────── */}
-      <section className="bg-navy text-cream px-6 md:px-12 py-24 md:py-32">
-        <motion.div {...rowReveal} className="max-w-3xl mx-auto text-center">
-          <span className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-4 block">
-            04 / Purpose
-          </span>
-          <h2 className="font-display font-light text-5xl mb-6">
-            The <span className="font-accent italic text-gold">LEAP</span> Foundation
-          </h2>
-          <p className="font-accent italic text-xl text-cream/70 mb-8">
-            Empowering the next generation of young creatives and entrepreneurs.
-          </p>
-          <Link
-            href="/foundation"
-            className="font-body text-[10px] uppercase tracking-widest border-b border-cream pb-1 hover:text-gold hover:border-gold transition-colors inline-block"
-          >
-            Support the Cause
-          </Link>
-        </motion.div>
+      <section className="bg-navy text-cream px-6 md:px-12 py-24 md:py-32 relative overflow-hidden">
+        {/* Decorative subtle ambient lights */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-4">
+            <span className="font-body text-[10px] uppercase tracking-[0.2em] text-gold block">
+              04 / Purpose
+            </span>
+          </div>
+
+          <div className="relative min-h-[300px] flex items-center justify-center">
+            {/* Left navigation arrow */}
+            <button
+              onClick={() => setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+              className="absolute left-0 md:-left-12 p-3 text-cream/40 hover:text-gold transition-colors focus:outline-none z-20 cursor-pointer"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            {/* Slide content with AnimatePresence */}
+            <div className="w-full px-8 md:px-16">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSlide}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="space-y-6"
+                >
+                  <h2 className="font-display font-light text-4xl md:text-5xl tracking-wide">
+                    {slides[activeSlide].title}
+                  </h2>
+                  <p className="font-accent italic text-lg text-gold/90 font-medium max-w-2xl mx-auto">
+                    {slides[activeSlide].subtitle}
+                  </p>
+                  <p className="font-body text-base text-cream/70 leading-relaxed max-w-2xl mx-auto">
+                    {slides[activeSlide].desc}
+                  </p>
+                  <div className="pt-4">
+                    <Link
+                      href={slides[activeSlide].linkUrl}
+                      className="font-body text-[10px] uppercase tracking-widest border-b border-cream pb-1 hover:text-gold hover:border-gold transition-colors inline-block"
+                    >
+                      {slides[activeSlide].linkText}
+                    </Link>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right navigation arrow */}
+            <button
+              onClick={() => setActiveSlide((prev) => (prev + 1) % slides.length)}
+              className="absolute right-0 md:-right-12 p-3 text-cream/40 hover:text-gold transition-colors focus:outline-none z-20 cursor-pointer"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+
+          {/* Indicators */}
+          <div className="flex justify-center gap-3 mt-10">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  index === activeSlide ? "bg-gold w-6" : "bg-cream/20 hover:bg-cream/40"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── 05 — The Visionary ──────────────────────────────── */}

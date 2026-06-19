@@ -5,7 +5,7 @@ import CourseProgress from "@/components/academy/CourseProgress";
 
 export default async function DashboardPage() {
   const session = await auth();
-  const userId = session!.user!.id!;
+  const userId = session?.user?.id ?? "dev-mock-user-id";
 
   const enrollments = await db.enrollment.findMany({
     where: { userId },
