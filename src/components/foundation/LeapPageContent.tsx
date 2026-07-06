@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import WelcomeAnimation from "@/components/foundation/WelcomeAnimation";
 import LeapHero from "@/components/foundation/LeapHero";
+import LeapVisionMission from "@/components/foundation/LeapVisionMission";
 import LeapPillars from "@/components/foundation/LeapPillars";
 import SheLeaps from "@/components/foundation/SheLeaps";
 import LeapJoin from "@/components/foundation/LeapJoin";
@@ -65,6 +66,7 @@ export default function LeapPageContent() {
         style={{ opacity: introCompleted ? 1 : 0 }}
       >
         <LeapHero />
+        <LeapVisionMission />
         <LeapPillars />
         <SheLeaps />
         <LeapJoin />
