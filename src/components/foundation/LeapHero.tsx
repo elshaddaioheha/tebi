@@ -110,8 +110,8 @@ export default function LeapHero({ active }: LeapHeroProps) {
 
           {/* Hero Main Header */}
           <motion.h1 variants={elementVariants} className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-[#0B1F3A] mb-6 leading-tight tracking-tight max-w-2xl z-10">
-            Make Big Changes <br className="hidden sm:block" />
-            and <span className="font-accent italic text-gold font-medium">Help the World</span>
+            Empowering Young Leaders <br className="hidden sm:block" />
+            to <span className="font-accent italic text-gold font-medium">Innovate, Build &amp; Act</span> with Purpose
           </motion.h1>
 
           {/* Description */}
