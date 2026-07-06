@@ -56,7 +56,7 @@ export default function LeapHero() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 px-6 overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[75vh] flex items-center justify-center pt-24 pb-14 px-6 overflow-hidden">
       {/* Background Image: Group Photo */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -74,7 +74,7 @@ export default function LeapHero() {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
         {/* Logo Badge */}
-        <div className="gsap-hero-logo mb-8 opacity-0">
+        <div className="gsap-hero-logo mb-6 opacity-0">
           <div className="bg-[#0B1F3A] p-4 rounded-2xl shadow-xl shadow-[#0B1F3A]/10 border border-gold/20 inline-block hover:scale-102 transition-transform duration-300">
             <Image
               src="/leap-logo.png"
@@ -87,18 +87,18 @@ export default function LeapHero() {
         </div>
 
         {/* Tagline / Subtitle */}
-        <span className="gsap-hero-tag opacity-0 font-body text-[10px] md:text-xs uppercase tracking-[0.35em] text-gold font-bold mb-4 block">
+        <span className="gsap-hero-tag opacity-0 font-body text-[10px] md:text-xs uppercase tracking-[0.35em] text-gold font-bold mb-3 block">
           Emma Collins Center For
         </span>
 
         {/* Hero Main Header */}
-        <h1 className="gsap-hero-heading opacity-0 font-display font-light text-4xl md:text-6xl lg:text-7xl text-[#0B1F3A] mb-6 leading-tight tracking-tight max-w-4xl">
+        <h1 className="gsap-hero-heading opacity-0 font-display font-light text-4xl md:text-6xl lg:text-7xl text-[#0B1F3A] mb-4 leading-tight tracking-tight max-w-4xl">
           Empowering Creative Visionaries <br />
           to <span className="font-accent italic text-gold font-medium">Leap Higher</span>
         </h1>
 
         {/* Description */}
-        <p className="gsap-hero-desc opacity-0 font-body text-base md:text-lg text-[#0B1F3A]/70 mb-10 max-w-2xl leading-relaxed">
+        <p className="gsap-hero-desc opacity-0 font-body text-base md:text-lg text-[#0B1F3A]/70 mb-6 max-w-2xl leading-relaxed">
           Nurturing next-generation leaders and entrepreneurs through systematic resource mobilization, professional mentorship, and intentional community action.
         </p>
 

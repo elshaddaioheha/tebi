@@ -62,7 +62,7 @@ export default function SheLeaps() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-[#FFF3F0] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-20 bg-[#FFF3F0] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
       {/* Abstract elegant shapes */}
       <div className="absolute top-12 left-10 w-[500px] h-[500px] bg-white/40 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
