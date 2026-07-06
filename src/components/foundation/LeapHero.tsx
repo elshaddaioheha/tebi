@@ -1,12 +1,23 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { ArrowDown, Facebook, Instagram } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { ArrowDown, Facebook, Instagram, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, Variants, AnimatePresence, Transition } from "framer-motion";
 
 interface LeapHeroProps {
   active: boolean;
 }
+
+const SLIDES = [
+  "/leapslideshow1.jpg",
+  "/leapslideshow2.jpg",
+  "/leapslideshow3.jpg",
+  "/leapslideshow4.jpg",
+  "/leapslideshow5.jpg",
+  "/leapslideshow6.jpg",
+  "/leapslideshow7.jpg",
+];
 
 const containerVariants: Variants = {
   hidden: {},
@@ -54,7 +65,53 @@ const doodleVariants: Variants = {
   },
 };
 
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+};
+
+const slideTransition: Transition = {
+  x: { type: "spring", stiffness: 300, damping: 30 },
+  opacity: { duration: 0.4 },
+};
+
 export default function LeapHero({ active }: LeapHeroProps) {
+  const [[page, direction], setPage] = useState([0, 0]);
+  const imageIndex = ((page % SLIDES.length) + SLIDES.length) % SLIDES.length;
+
+  const nextSlide = () => {
+    setPage([page + 1, 1]);
+  };
+
+  const prevSlide = () => {
+    setPage([page - 1, -1]);
+  };
+
+  const goToSlide = (idx: number) => {
+    const dir = idx > imageIndex ? 1 : -1;
+    setPage([idx, dir]);
+  };
+
+  useEffect(() => {
+    if (!active) return;
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [page, active]);
+
   const scrollToContent = () => {
     const element = document.getElementById("pillars");
     if (element) {
@@ -155,7 +212,7 @@ export default function LeapHero({ active }: LeapHeroProps) {
           </motion.div>
         </div>
 
-        {/* Right Column: Hero Media / Tablet frame */}
+        {/* Right Column: Hero Media / Tablet frame with Slideshow */}
         <motion.div variants={mediaVariants} className="lg:col-span-6 flex justify-center items-center relative w-full">
           {/* Hand-drawn Sun Doodle */}
           <motion.div
@@ -175,18 +232,63 @@ export default function LeapHero({ active }: LeapHeroProps) {
             </svg>
           </motion.div>
 
-          {/* Tablet Device Frame */}
-          <div className="relative w-full max-w-lg md:max-w-xl aspect-[4/3] rounded-[2rem] md:rounded-[2.5rem] border-[6px] md:border-[10px] border-[#0B1F3A] bg-[#0B1F3A] shadow-2xl shadow-[#0B1F3A]/20 overflow-hidden z-10">
-            <div className="absolute inset-0">
-              <Image
-                src="/leap-hero.jpg"
-                alt="LEAP Group Photo"
-                fill
-                priority
-                className="object-cover object-center"
-              />
+          {/* Tablet Device Frame with Interactive Slideshow */}
+          <div className="relative w-full max-w-lg md:max-w-xl aspect-[4/3] rounded-[2rem] md:rounded-[2.5rem] border-[6px] md:border-[10px] border-[#0B1F3A] bg-[#0B1F3A] shadow-2xl shadow-[#0B1F3A]/20 overflow-hidden z-10 group/slider">
+            <div className="absolute inset-0 select-none">
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                  key={page}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <Image
+                    src={SLIDES[imageIndex]}
+                    alt={`LEAP Slide ${imageIndex + 1}`}
+                    fill
+                    priority={imageIndex === 0}
+                    className="object-cover object-center"
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1F3A]/10 via-transparent to-white/10 pointer-events-none" />
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              aria-label="Previous image"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#0B1F3A]/60 text-white hover:bg-gold hover:text-[#0B1F3A] opacity-0 group-hover/slider:opacity-100 transition-all duration-300 shadow-md backdrop-blur-sm cursor-pointer border-none"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={nextSlide}
+              aria-label="Next image"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#0B1F3A]/60 text-white hover:bg-gold hover:text-[#0B1F3A] opacity-0 group-hover/slider:opacity-100 transition-all duration-300 shadow-md backdrop-blur-sm cursor-pointer border-none"
+            >
+              <ChevronRight size={20} />
+            </button>
+
+            {/* Pagination Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              {SLIDES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 border-none cursor-pointer ${
+                    idx === imageIndex ? "bg-gold w-4" : "bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Soft glass overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1F3A]/10 via-transparent to-white/10 pointer-events-none z-10" />
           </div>
         </motion.div>
       </div>
