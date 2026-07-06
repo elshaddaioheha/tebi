@@ -67,7 +67,7 @@ export default function LeapHero() {
           className="object-cover object-center"
         />
         {/* Soft, premium light cream overlay with backdrop blur */}
-        <div className="absolute inset-0 bg-[#FBF7EE]/80 md:bg-[#FBF7EE]/70 backdrop-blur-[3px]" />
+        <div className="absolute inset-0 bg-[#FBF7EE]/70 md:bg-[#FBF7EE]/60 backdrop-blur-[3px]" />
         {/* Subtle vignette/gradient to isolate the content */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#FBF7EE]/20 via-transparent to-[#FBF7EE]" />
       </div>
