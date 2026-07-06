@@ -7,8 +7,7 @@ import LeapVisionMission from "@/components/foundation/LeapVisionMission";
 import LeapPillars from "@/components/foundation/LeapPillars";
 import SheLeaps from "@/components/foundation/SheLeaps";
 import LeapJoin from "@/components/foundation/LeapJoin";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { motion } from "framer-motion";
 
 export default function LeapPageContent() {
   const [introCompleted, setIntroCompleted] = useState(false);
@@ -35,16 +34,6 @@ export default function LeapPageContent() {
     setIntroCompleted(true);
   };
 
-  useGSAP(() => {
-    if (introCompleted && contentRef.current) {
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1.0, ease: "power2.out" }
-      );
-    }
-  }, { dependencies: [introCompleted] });
-
   if (loadingSession) {
     return (
       <div className="min-h-screen bg-[#06152D] flex items-center justify-center">
@@ -61,16 +50,18 @@ export default function LeapPageContent() {
       )}
 
       {/* Main Website Contents - revealed dynamically */}
-      <div
+      <motion.div
         ref={contentRef}
-        style={{ opacity: introCompleted ? 1 : 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: introCompleted ? 1 : 0 }}
+        transition={{ duration: 1.0, ease: "easeOut" }}
       >
         <LeapHero active={introCompleted} />
         <LeapVisionMission />
         <LeapPillars />
         <SheLeaps />
         <LeapJoin />
-      </div>
+      </motion.div>
     </div>
   );
 }

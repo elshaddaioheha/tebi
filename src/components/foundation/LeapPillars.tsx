@@ -1,14 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import { Compass, Users, Sparkles, GraduationCap } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { motion, Variants } from "framer-motion";
 
 const PILLARS = [
   {
@@ -41,33 +34,31 @@ const PILLARS = [
   },
 ];
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
 export default function LeapPillars() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    gsap.from(".leap-pillar-card", {
-      opacity: 0,
-      y: 45,
-      stagger: 0.15,
-      duration: 1.0,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      }
-    });
-  }, { scope: containerRef });
-
   return (
-    <section ref={containerRef} id="pillars" className="pt-16 pb-6 md:pt-20 md:pb-8 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
+    <section id="pillars" className="pt-16 pb-6 md:pt-20 md:pb-8 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
       {/* Decorative lines / light ambient lights */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C8A24B]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#0B1F3A]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 animate-fade-in">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-2xl mx-auto mb-12 md:mb-16"
+        >
           <span className="font-body text-[10px] uppercase tracking-[0.25em] text-gold font-bold mb-3 block">
             Our Core Blueprint
           </span>
@@ -78,15 +69,22 @@ export default function LeapPillars() {
           <p className="font-body text-sm md:text-base text-[#0B1F3A]/70 leading-relaxed">
             LEAP represents the strategic framework through which Diamond Dreams Foundation cultivates capacity, structures enterprises, and generates visible community advancement.
           </p>
-        </div>
+        </motion.div>
 
         {/* Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ staggerChildren: 0.15 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {PILLARS.map((p, index) => {
             const Icon = p.icon;
             return (
-              <div
+              <motion.div
                 key={p.title}
+                variants={cardVariants}
                 className="leap-pillar-card group relative bg-[#FBF7EE] p-8 md:p-10 rounded-[2.5rem] border border-[#0B1F3A]/5 hover:border-gold/30 hover:shadow-xl hover:shadow-[#0B1F3A]/5 transition-all duration-500 flex flex-col justify-between overflow-hidden"
               >
                 {/* Decorative background hover block */}
@@ -118,10 +116,10 @@ export default function LeapPillars() {
                     Pillar 0{index + 1}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
