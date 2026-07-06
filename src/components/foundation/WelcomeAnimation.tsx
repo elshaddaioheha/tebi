@@ -142,20 +142,24 @@ export default function WelcomeAnimation({ onComplete }: WelcomeAnimationProps) 
       </div>
 
       {/* Step 1: L-E-A-P Acronym build */}
-      <div className="gsap-step-1 absolute inset-0 flex flex-col justify-center w-full max-w-2xl mx-auto space-y-8 md:space-y-12 px-6">
+      <div className="gsap-step-1 absolute inset-0 flex flex-col justify-center w-full max-w-2xl mx-auto space-y-6 md:space-y-12 px-6">
         {[
-          { letter: "L", label: "Leadership" },
-          { letter: "E", label: "Empowerment/Entrepreneurship" },
-          { letter: "A", label: "Action" },
-          { letter: "P", label: "Purpose" }
+          { letter: "L", label: ["Leadership"] },
+          { letter: "E", label: ["Empowerment", "Entrepreneurship"] },
+          { letter: "A", label: ["Action"] },
+          { letter: "P", label: ["Purpose"] }
         ].map((item) => (
-          <div key={item.letter} className={`gsap-row-${item.letter.toLowerCase()} opacity-0 flex items-center gap-6 md:gap-8 pl-4 md:pl-16 w-full`}>
-            <span className="font-display font-extrabold text-5xl md:text-7xl text-gold border-r border-gold/20 pr-6 w-20 md:w-28 text-center">
+          <div key={item.letter} className={`gsap-row-${item.letter.toLowerCase()} opacity-0 flex items-center gap-4 md:gap-8 pl-2 sm:pl-8 md:pl-16 w-full`}>
+            <span className="font-display font-extrabold text-4xl sm:text-5xl md:text-7xl text-gold border-r border-gold/20 pr-4 md:pr-6 w-16 sm:w-20 md:w-28 text-center flex-shrink-0">
               {item.letter}
             </span>
-            <span className="font-body text-xl md:text-3xl font-light tracking-wide text-cream/90">
-              {item.label}
-            </span>
+            <div className="flex flex-col justify-center">
+              {item.label.map((word, wIdx) => (
+                <span key={wIdx} className="font-body text-base sm:text-xl md:text-3xl font-light tracking-wide text-cream/90 leading-tight">
+                  {word}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -182,7 +186,8 @@ export default function WelcomeAnimation({ onComplete }: WelcomeAnimationProps) 
                   x="50%"
                   y="70%"
                   textAnchor="middle"
-                  className="font-display font-black tracking-widest text-[130px] md:text-[150px] uppercase font-extrabold fill-white"
+                  className="font-display font-black tracking-widest uppercase font-extrabold fill-white"
+                  fontSize="140"
                   style={{ fontFamily: "Outfit, sans-serif", fontWeight: 900 }}
                 >
                   LEAP
@@ -208,13 +213,15 @@ export default function WelcomeAnimation({ onComplete }: WelcomeAnimationProps) 
         </div>
 
         {/* Acronym values list */}
-        <div className="gsap-labels-2 opacity-0 font-body text-xs md:text-sm tracking-[0.2em] text-cream/70 max-w-2xl leading-relaxed flex flex-wrap justify-center gap-2">
-          <span>Leadership Empowerment</span>
-          <span className="text-gold">•</span>
+        <div className="gsap-labels-2 opacity-0 font-body text-xs md:text-sm tracking-[0.15em] text-cream/70 max-w-2xl leading-relaxed flex flex-wrap justify-center items-center gap-x-2 gap-y-1 px-4">
+          <span>Leadership</span>
+          <span className="text-gold">|</span>
+          <span>Empowerment</span>
+          <span className="text-gold">|</span>
           <span>Entrepreneurship</span>
-          <span className="text-gold">•</span>
+          <span className="text-gold">|</span>
           <span>Action</span>
-          <span className="text-gold">•</span>
+          <span className="text-gold">|</span>
           <span>Purpose</span>
         </div>
 
