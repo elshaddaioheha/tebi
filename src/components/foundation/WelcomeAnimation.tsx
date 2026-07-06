@@ -126,7 +126,7 @@ export default function WelcomeAnimation({ onComplete }: WelcomeAnimationProps) 
       <div className="gsap-step-0 absolute inset-0 flex flex-col justify-center items-center text-center space-y-4 px-6">
         <div className="gsap-logo-0 opacity-0 flex justify-center mb-6">
           <Image
-            src="/leap-logo.png"
+            src="/leap-logo-blue.png"
             alt="LEAP Logo Silhouette"
             width={120}
             height={96}
@@ -169,7 +169,7 @@ export default function WelcomeAnimation({ onComplete }: WelcomeAnimationProps) 
         {/* Logo Silhouette */}
         <div className="gsap-logo-2 opacity-0 flex justify-center">
           <Image
-            src="/leap-logo.png"
+            src="/leap-logo-blue.png"
             alt="LEAP Logo Silhouette"
             width={140}
             height={112}

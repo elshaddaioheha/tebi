@@ -6,14 +6,14 @@ import { motion, Variants } from "framer-motion";
 const PILLARS = [
   {
     letter: "L",
-    title: "Leadership Empowerment",
+    title: "Leadership",
     desc: "Developing self-governance, strategic influence, and operational authority. We train creative directors and project leads to command teams and guide organizational visions with confidence and clarity.",
     icon: Users,
     color: "from-blue-500/10 to-indigo-500/5",
   },
   {
     letter: "E",
-    title: "Entrepreneurship",
+    title: "Empowerment  Entrepreneurship",
     desc: "Transforming raw creative talent into scalable corporate assets. Through business modeling, pricing methodologies, and administrative systems, we align with TEBI to build sustainable enterprises.",
     icon: GraduationCap,
     color: "from-amber-500/10 to-orange-500/5",
@@ -52,7 +52,7 @@ export default function LeapPillars() {
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -72,7 +72,7 @@ export default function LeapPillars() {
         </motion.div>
 
         {/* Pillars Grid */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}

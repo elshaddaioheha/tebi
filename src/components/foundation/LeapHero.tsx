@@ -149,13 +149,13 @@ export default function LeapHero({ active }: LeapHeroProps) {
 
           {/* Logo Badge */}
           <motion.div variants={elementVariants} className="mb-6 z-10">
-            <div className="bg-[#0B1F3A] p-3.5 rounded-2xl shadow-xl shadow-[#0B1F3A]/10 border border-gold/20 inline-block hover:scale-102 transition-transform duration-300">
+            <div className="hover:scale-102 transition-transform duration-300 inline-block">
               <Image
-                src="/leap-logo.png"
+                src="/leap-logo-dark.png"
                 alt="LEAP Logo"
-                width={140}
-                height={70}
-                className="h-16 w-auto object-contain"
+                width={350}
+                height={175}
+                className="h-40 w-auto object-contain"
               />
             </div>
           </motion.div>

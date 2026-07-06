@@ -213,7 +213,7 @@ export default function MasterPortal() {
             </span>
             <div className="flex justify-center">
               <Image
-                src="/leap-logo.png"
+                src="/leap-logo-blue.png"
                 alt="LEAP Logo"
                 width={140}
                 height={112}
