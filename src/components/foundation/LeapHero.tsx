@@ -6,7 +6,11 @@ import { ArrowDown, Facebook, Instagram } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-export default function LeapHero() {
+interface LeapHeroProps {
+  active: boolean;
+}
+
+export default function LeapHero({ active }: LeapHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollToContent = () => {
@@ -17,6 +21,7 @@ export default function LeapHero() {
   };
 
   useGSAP(() => {
+    if (!active) return;
     const tl = gsap.timeline();
     tl.fromTo(
       ".gsap-hero-logo",
@@ -65,7 +70,7 @@ export default function LeapHero() {
       { opacity: 1, duration: 0.6, ease: "power2.out" },
       "-=0.2"
     );
-  }, { scope: containerRef });
+  }, { dependencies: [active], scope: containerRef });
 
   return (
     <section ref={containerRef} className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-24 pb-16 px-6 md:px-12 lg:px-20 overflow-hidden bg-[#FBF7EE]">

@@ -65,7 +65,7 @@ export default function LeapPageContent() {
         ref={contentRef}
         style={{ opacity: introCompleted ? 1 : 0 }}
       >
-        <LeapHero />
+        <LeapHero active={introCompleted} />
         <LeapVisionMission />
         <LeapPillars />
         <SheLeaps />
