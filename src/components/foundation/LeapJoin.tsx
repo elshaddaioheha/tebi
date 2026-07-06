@@ -79,7 +79,7 @@ export default function LeapJoin() {
   };
 
   return (
-    <section ref={containerRef} id="join" className="py-24 md:py-32 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
+    <section ref={containerRef} id="join" className="py-16 md:py-20 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
       {/* Decorative details */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
 

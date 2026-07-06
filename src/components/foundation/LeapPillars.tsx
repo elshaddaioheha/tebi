@@ -60,14 +60,14 @@ export default function LeapPillars() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="pillars" className="py-24 md:py-32 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
+    <section ref={containerRef} id="pillars" className="pt-16 pb-6 md:pt-20 md:pb-8 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
       {/* Decorative lines / light ambient lights */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C8A24B]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#0B1F3A]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24 animate-fade-in">
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 animate-fade-in">
           <span className="font-body text-[10px] uppercase tracking-[0.25em] text-gold font-bold mb-3 block">
             Our Core Blueprint
           </span>
