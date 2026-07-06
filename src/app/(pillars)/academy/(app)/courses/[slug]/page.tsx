@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
@@ -8,6 +9,52 @@ import AnonymousEnrollmentCard from "@/components/academy/AnonymousEnrollmentCar
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const course = await db.course.findUnique({
+    where: { slug },
+  });
+
+  if (!course) {
+    return {
+      title: "Course | TEBI",
+      description: "Learn how to build a structured event business.",
+    };
+  }
+
+  const title = `${course.title} | TEBI Academy`;
+  const description = course.description || "Take your event business to the next level with coaching and structured programs.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://tebi.diamonddreamsgroup.com/courses/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://tebi.diamonddreamsgroup.com/courses/${slug}`,
+      siteName: "The Event Business Institute (TEBI)",
+      images: [
+        {
+          url: "/tebi-logo.png",
+          width: 800,
+          height: 600,
+          alt: course.title,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/tebi-logo.png"],
+    },
+  };
 }
 
 export default async function CoursePage({ params }: Props) {
