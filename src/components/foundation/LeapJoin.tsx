@@ -70,12 +70,19 @@ export default function LeapJoin() {
     if (!validate()) return;
 
     setLoading(true);
-    // Simulate API call
+
+    const subject = encodeURIComponent(`LEAP Collaboration Inquiry - ${formData.name}`);
+    const bodyText = `Name: ${formData.name}\nEmail: ${formData.email}\nOrganization: ${formData.org || "N/A"}\nPreferred Involvement: ${formData.role}\n\nMessage:\n${formData.message}`;
+    const mailtoUrl = `mailto:diamondreamsevents@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+
+    // Redirect to mailto
+    window.location.href = mailtoUrl;
+
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
       setFormData({ name: "", email: "", org: "", role: "partner", message: "" });
-    }, 1800);
+    }, 1000);
   };
 
   return (
@@ -108,8 +115,8 @@ export default function LeapJoin() {
                 </div>
                 <div>
                   <h4 className="font-body text-[10px] uppercase tracking-widest text-[#0B1F3A]/50">Write to Us</h4>
-                  <a href="mailto:foundation@diamonddreamsgroup.com" className="font-body text-sm font-semibold hover:text-gold transition-colors">
-                    foundation@diamonddreamsgroup.com
+                  <a href="mailto:diamondreamsevents@gmail.com" className="font-body text-sm font-semibold hover:text-gold transition-colors">
+                    diamondreamsevents@gmail.com
                   </a>
                 </div>
               </div>
