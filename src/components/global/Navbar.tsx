@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const LEFT_LINKS = [
     { name: "Bridal", href: "/bridal" },
@@ -62,9 +63,12 @@ export default function Navbar() {
                     href="/"
                     className="flex-1 flex items-center justify-start md:justify-center md:flex-none"
                 >
-                    <img
+                    <Image
                         src="/dd-hero-logo.png"
                         alt="Diamond Dreams"
+                        width={200}
+                        height={50}
+                        priority
                         className={`transition-all duration-500 object-contain ${
                             solid ? "h-10 w-auto" : "h-12 w-auto"
                         }`}

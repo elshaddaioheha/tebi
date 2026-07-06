@@ -1,7 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
 import { Compass, Users, Sparkles, GraduationCap } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const PILLARS = [
   {
@@ -35,15 +42,32 @@ const PILLARS = [
 ];
 
 export default function LeapPillars() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".leap-pillar-card", {
+      opacity: 0,
+      y: 45,
+      stagger: 0.15,
+      duration: 1.0,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      }
+    });
+  }, { scope: containerRef });
+
   return (
-    <section id="pillars" className="py-24 md:py-32 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
+    <section ref={containerRef} id="pillars" className="py-24 md:py-32 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
       {/* Decorative lines / light ambient lights */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C8A24B]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#0B1F3A]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24 animate-fade-in">
           <span className="font-body text-[10px] uppercase tracking-[0.25em] text-gold font-bold mb-3 block">
             Our Core Blueprint
           </span>
@@ -61,13 +85,9 @@ export default function LeapPillars() {
           {PILLARS.map((p, index) => {
             const Icon = p.icon;
             return (
-              <motion.div
+              <div
                 key={p.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="group relative bg-[#FBF7EE] p-8 md:p-10 rounded-[2.5rem] border border-[#0B1F3A]/5 hover:border-gold/30 hover:shadow-xl hover:shadow-[#0B1F3A]/5 transition-all duration-500 flex flex-col justify-between overflow-hidden"
+                className="leap-pillar-card group relative bg-[#FBF7EE] p-8 md:p-10 rounded-[2.5rem] border border-[#0B1F3A]/5 hover:border-gold/30 hover:shadow-xl hover:shadow-[#0B1F3A]/5 transition-all duration-500 flex flex-col justify-between overflow-hidden"
               >
                 {/* Decorative background hover block */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`} />
@@ -98,7 +118,7 @@ export default function LeapPillars() {
                     Pillar 0{index + 1}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

@@ -1,10 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, Mail, MapPin, Phone } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function LeapJoin() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,6 +25,32 @@ export default function LeapJoin() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  useGSAP(() => {
+    gsap.from(".join-reveal-left", {
+      opacity: 0,
+      x: -40,
+      duration: 1.0,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      }
+    });
+
+    gsap.from(".join-reveal-right", {
+      opacity: 0,
+      x: 40,
+      duration: 1.0,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      }
+    });
+  }, { scope: containerRef });
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -44,14 +79,14 @@ export default function LeapJoin() {
   };
 
   return (
-    <section id="join" className="py-24 md:py-32 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
+    <section ref={containerRef} id="join" className="py-24 md:py-32 bg-[#FAFAF5] text-[#0B1F3A] px-6 md:px-12 relative overflow-hidden">
       {/* Decorative details */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
           {/* Left Info Column */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className="join-reveal-left lg:col-span-5 flex flex-col justify-between">
             <div>
               <span className="font-body text-[10px] uppercase tracking-[0.25em] text-gold font-bold mb-4 block">
                 Collaborative Impact
@@ -104,7 +139,7 @@ export default function LeapJoin() {
           </div>
 
           {/* Right Form Card */}
-          <div className="lg:col-span-7">
+          <div className="join-reveal-right lg:col-span-7">
             <div className="bg-[#FBF7EE] p-8 md:p-12 rounded-[2.5rem] border border-[#0B1F3A]/5 shadow-xl shadow-[#0B1F3A]/5 relative overflow-hidden h-full flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 {!success ? (
